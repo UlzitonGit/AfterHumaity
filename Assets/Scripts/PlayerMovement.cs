@@ -9,9 +9,9 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     public Rigidbody2D rb;
-    public Vector2 moveVector;
-    [SerializeField] float moveSpeed = 4f;
-    [SerializeField] float jumpForce = 4f;
+     Vector2 moveVector;
+    [SerializeField] public float moveSpeed = 4f;
+    [SerializeField] public float jumpForce = 4f;
     private bool isGrounded;
     private bool isOnHold;
     [SerializeField] float jumpWallHorizontal = 10;
@@ -20,13 +20,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform rightWallPos;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask wallLayer;
+    [SerializeField] float dashPower;
     private bool canJump = true;
     private bool isJumping = false;
     private int jumpCount = 0;
     public bool isRightWall = false;
     public bool isLeftWall = false;
     bool isOnWall = false;
+    bool canDash = true;
+    bool isDashing = false;
     bool wallJumpimg = false;
+    public float dir = 1;
+   
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -59,10 +64,16 @@ public class PlayerMovement : MonoBehaviour
     }
     void Walk()
     {
-        if (wallJumpimg == true) return;
+        if (wallJumpimg == true || isDashing == true) return;
         moveVector.x = Input.GetAxis("Horizontal");
+        if(moveVector.x != 0) dir = moveVector.x;
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
-      
+        if (dir < 0) dir = -1;
+        else dir = 1;
+        if (Input.GetKey(KeyCode.F) && canDash)
+        {
+            StartCoroutine(DashReload());      
+        }
 
     }
     void Jump()
@@ -121,6 +132,17 @@ public class PlayerMovement : MonoBehaviour
         isJumping = false;
         yield return new WaitForSeconds(0.1f);
         canJump = true;
+    }
+    IEnumerator DashReload()
+    {
+       
+        canDash = false;
+        isDashing = true;
+        rb.AddForce(new Vector2(dir * dashPower, rb.velocity.y), ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.3f);
+        isDashing = false;
+        yield return new WaitForSeconds(0.8f);
+        canDash = true;
     }
     IEnumerator JumpWall()
     {
