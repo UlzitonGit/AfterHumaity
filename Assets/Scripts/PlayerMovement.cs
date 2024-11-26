@@ -31,9 +31,10 @@ public class PlayerMovement : MonoBehaviour
     bool isDashing = false;
     bool wallJumpimg = false;
     public float dir = 1;
-   
+    bool canDoubleJump;
     void Start()
     {
+        canDoubleJump = PlayerPrefs.GetString("canDoubleJump") == "true";
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 2f;
     }
@@ -105,12 +106,16 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-  
+    public void CheckAbilities()
+    {
+        canDoubleJump = PlayerPrefs.GetString("canDoubleJump") == "true";
+    }
     private void CheckGround()
     {
         Collider2D[] collider = Physics2D.OverlapCircleAll(groundPos.position, 0.1f, groundLayer);
         isGrounded = collider.Length > 0;
-        if  (isGrounded == true && isJumping == false) jumpCount = 2;
+        if  (isGrounded == true && isJumping == false && canDoubleJump == false) jumpCount = 1;
+        if (isGrounded == true && isJumping == false && canDoubleJump == true) jumpCount = 2;
     }
     private void CheckLeft()
     {
