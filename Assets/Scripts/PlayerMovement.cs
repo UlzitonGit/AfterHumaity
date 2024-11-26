@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform rightWallPos;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask wallLayer;
+    [SerializeField] Transform attackPoint;
     [SerializeField] float dashPower;
     private bool canJump = true;
     private bool isJumping = false;
@@ -69,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
         moveVector.x = Input.GetAxis("Horizontal");
         if(moveVector.x != 0) dir = moveVector.x;
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
+        if (moveVector.x < 0) attackPoint.localScale = new Vector3(-1, 1, 1);
+        if (moveVector.x > 0) attackPoint.localScale = new Vector3(1, 1, 1);
         if (dir < 0) dir = -1;
         else dir = 1;
         if (Input.GetKey(KeyCode.F) && canDash)
@@ -94,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(new Vector2(jumpWallHorizontal * -1, jumpForce) * 10);
             
         }
-        else if (Input.GetKey(KeyCode.Space) && jumpCount > 0 && canJump == true && wallJumpimg == false)
+        else if (Input.GetKey(KeyCode.Space) && (canDoubleJump == true && jumpCount > 0 || canDoubleJump == false && isGrounded == true) && canJump == true && wallJumpimg == false)
         {          
             canJump = false;
             StartCoroutine(JumpReload());
