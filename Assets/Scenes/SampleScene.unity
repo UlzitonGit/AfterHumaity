@@ -6677,8 +6677,8 @@ MonoBehaviour:
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 19853
-    ctime1: 41056
+    ctime0: 16384
+    ctime1: 32768
     ctime2: 65535
     ctime3: 0
     ctime4: 0
@@ -34620,6 +34620,8 @@ MonoBehaviour:
   rageRadius: 5
   attackRadius: 1
   attackDuration: 1
+  damage: 10
+  attackcooldown: 1
   attackZone: {fileID: 52343983}
 --- !u!50 &2067006355
 Rigidbody2D:
