@@ -70,8 +70,8 @@ public class PlayerMovement : MonoBehaviour
         moveVector.x = Input.GetAxis("Horizontal");
         if(moveVector.x != 0) dir = moveVector.x;
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
-        if (moveVector.x < 0) attackPoint.localScale = new Vector3(-1, 1, 1);
-        if (moveVector.x > 0) attackPoint.localScale = new Vector3(1, 1, 1);
+        if (moveVector.x < 0) attackPoint.localRotation = Quaternion.Euler(0, 180, 0);
+        if (moveVector.x > 0) attackPoint.localRotation = Quaternion.Euler(0, 0, 0);
         if (dir < 0) dir = -1;
         else dir = 1;
         if (Input.GetKey(KeyCode.F) && canDash)
