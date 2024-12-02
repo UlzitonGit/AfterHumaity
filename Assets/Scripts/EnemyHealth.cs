@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] ParticleSystem flame;
     private float health = 100;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    private FirstEnemy _firstEnemy;
+    private GameManager _gameManager;
+    
+    public TextMeshProUGUI scoreText;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        _firstEnemy = GetComponent<FirstEnemy>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
     public void GetDamage(float damage)
     {
         health -= damage;
         if (health < 0)
         {
+            _gameManager.score += _firstEnemy.score;
+            scoreText.text = ("Score: " + (_gameManager.score).ToString());
             Destroy(gameObject);
         }
     }
@@ -32,7 +33,6 @@ public class EnemyHealth : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Flame"))
-            flame.maxParticles = 0;
+        if (collision.CompareTag("Flame")) flame.maxParticles = 0;
     }
 }
