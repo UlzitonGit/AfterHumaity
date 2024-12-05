@@ -7706,7 +7706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 334433684}
-  noKeyMessage: {fileID: 0}
+  noKeyMessage: {fileID: 1291310103}
   messageDisplayTime: 3
 --- !u!1 &450969665
 GameObject:
@@ -29982,7 +29982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1729904276}
-  noKeyMessage: {fileID: 0}
+  noKeyMessage: {fileID: 1291310103}
   messageDisplayTime: 3
 --- !u!61 &1729904279
 BoxCollider2D:
