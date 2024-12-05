@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class Tooltip : MonoBehaviour
 {
-   public GameObject tooltip;
+   [SerializeField] private GameObject tooltip;
+   [SerializeField] private float autoHideTime = 5f;
 
-   private float autoHideTime = 5f;
-
-   private float hidetimer;
+   private float hideTimer;
 
    void Start()
    {
@@ -16,24 +15,24 @@ public class Tooltip : MonoBehaviour
       }
    }
 
-   void toogletooltip()
+   void ToggleTooltip()
    {
       if (tooltip != null)
       {
          tooltip.SetActive(true);
-         hidetimer = Time.time + autoHideTime;
+         hideTimer = Time.time + autoHideTime;
+         Debug.Log("Hint showed");
       }
    }
-   
+
    void Update()
    {
       if (Input.GetKeyDown(KeyCode.H))
-      { 
-         toogletooltip();
-         Debug.Log("Hint showed");
+      {
+         ToggleTooltip();
       }
 
-      if (tooltip.activeSelf && Time.time >= hidetimer)
+      if (tooltip != null && tooltip.activeSelf && Time.time >= hideTimer)
       {
          HideTooltip();
       }
@@ -46,5 +45,4 @@ public class Tooltip : MonoBehaviour
          tooltip.SetActive(false);
       }
    }
-   
 }

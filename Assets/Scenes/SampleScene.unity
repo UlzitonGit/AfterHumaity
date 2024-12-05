@@ -7706,7 +7706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 334433684}
-  NoKeyMessage: {fileID: 1291310103}
+  noKeyMessage: {fileID: 0}
   messageDisplayTime: 3
 --- !u!1 &450969665
 GameObject:
@@ -14353,8 +14353,6 @@ MonoBehaviour:
     m_Bits: 64
   attackPoint: {fileID: 684941873}
   dashPower: 10
-  isRightWall: 0
-  isLeftWall: 0
   dir: 1
 --- !u!114 &648381816
 MonoBehaviour:
@@ -14388,6 +14386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackZone: {fileID: 1116664463}
+  attackCooldown: 0.7
 --- !u!114 &648381818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14402,7 +14401,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  damage: 25
   healthBar: {fileID: 297328686}
 --- !u!114 &648381819
 MonoBehaviour:
@@ -15034,6 +15032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltip: {fileID: 49704154}
+  autoHideTime: 5
 --- !u!4 &780797991
 Transform:
   m_ObjectHideFlags: 0
@@ -27401,7 +27400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1291310104
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28405,7 +28404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1410658016}
-  NoKeyMessage: {fileID: 1291310103}
+  noKeyMessage: {fileID: 0}
   messageDisplayTime: 3
 --- !u!1 &1451468742
 GameObject:
@@ -29983,7 +29982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1729904276}
-  NoKeyMessage: {fileID: 1291310103}
+  noKeyMessage: {fileID: 0}
   messageDisplayTime: 3
 --- !u!61 &1729904279
 BoxCollider2D:
@@ -36956,6 +36955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flame: {fileID: 141705158}
+  health: 100
   scoreText: {fileID: 809907772}
 --- !u!1 &2090746219
 GameObject:

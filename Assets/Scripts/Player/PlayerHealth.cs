@@ -6,26 +6,30 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-    public int damage;
-
     public HealthBar healthBar;
 
-    private FirstEnemy _firstEnemy;
-
-    private bool canAttack;
+    private FirstEnemy firstEnemy;
+    private bool canTakeDamage = true;
 
     private void Start()
     {
-        canAttack = true;
-        _firstEnemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<FirstEnemy>();
-        
+        firstEnemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<FirstEnemy>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("AttackZone") && canTakeDamage)
+        {
+            StartCoroutine(DamageCooldown());
+            TakeDamage();
+        }
+    }
+
     private void TakeDamage()
     {
-        currentHealth -= _firstEnemy.damage;
+        currentHealth -= firstEnemy.damage;
         healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
@@ -34,20 +38,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private IEnumerator DamageCooldown()
     {
-        if (other.CompareTag("AttackZone") && canAttack)
-        {
-            StartCoroutine(AttackCooldown());
-            TakeDamage();
-        }
-    }
-
-    private IEnumerator AttackCooldown()
-    {
-        canAttack = false;
-        yield return new WaitForSeconds(_firstEnemy.attackCooldown);
-        canAttack = true;
+        canTakeDamage = false;
+        yield return new WaitForSeconds(firstEnemy.attackCooldown);
+        canTakeDamage = true;
     }
 
     private void Die()

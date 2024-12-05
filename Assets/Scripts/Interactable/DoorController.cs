@@ -1,56 +1,52 @@
 using UnityEngine;
-
+using System.Collections;
 
 public class DoorController : MonoBehaviour
 {
-    private bool hasKey = false;
-    
+    private static bool hasKey;
     public GameObject door;
-
-    public GameObject NoKeyMessage;
-    
+    public GameObject noKeyMessage;
     public float messageDisplayTime = 3f;
-    
-    private bool IsPlayerNearby = false;
-    
-    private float messageHideTime = 0f;
+    private bool isPlayerNearby;
 
     private void Start()
     {
-        if (NoKeyMessage != null)
+        if (noKeyMessage != null)
         {
-            NoKeyMessage.SetActive(false);
+            noKeyMessage.SetActive(false);
         }
     }
 
-    void Update()
+    private void Update()
     {
-        if (IsPlayerNearby && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
         {
             if (hasKey)
             {
                 OpenDoor();
             }
-
             else
             {
-                ShowNoKeymessage();
+                ShowNoKeyMessage();
             }
         }
     }
 
-    void ShowNoKeymessage()
+    private void ShowNoKeyMessage()
     {
-        NoKeyMessage.SetActive(true);
-        messageHideTime = Time.time + messageDisplayTime;
+        noKeyMessage.SetActive(true);
+        StartCoroutine(Wfs());
     }
 
-    void OpenDoor()
+    private IEnumerator Wfs()
     {
-        if (door != null)
-        {
-            door.SetActive(false);
-        }
+        yield return new WaitForSeconds(messageDisplayTime);
+        noKeyMessage.SetActive(false);
+    }
+
+    private void OpenDoor()
+    {
+        door.SetActive(false);
     }
 
     public void CollectKey()
@@ -62,7 +58,7 @@ public class DoorController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            IsPlayerNearby = true;
+            isPlayerNearby = true;
         }
     }
 
@@ -70,7 +66,7 @@ public class DoorController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            IsPlayerNearby = false;
+            isPlayerNearby = false;
         }
     }
 }

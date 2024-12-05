@@ -4,20 +4,16 @@ using UnityEngine;
 public class FirstEnemy : EnemyGeneral
 {
     public int damage = 10;
-    public float attackCooldown = 1.0f;
-    
+    public float attackCooldown = 1f;
     public int score = 125;
+    [SerializeField] private GameObject attackZone;
 
-    private float nextAttackTime = 0f;
-    
-    [SerializeField] GameObject attackZone;
-  
     public override void Attack()
     {
-        StartCoroutine(Attacking());
+        StartCoroutine(ExecuteAttack());
     }
-    
-    IEnumerator Attacking()
+
+    private IEnumerator ExecuteAttack()
     {
         attackZone.SetActive(true);
         yield return new WaitForSeconds(0.2f);

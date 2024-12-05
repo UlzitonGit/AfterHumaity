@@ -1,33 +1,27 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] GameObject attackZone;
+    [SerializeField] private GameObject attackZone;
+    [SerializeField] private float attackCooldown = 0.7f;
     private bool canAttack = true;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && canAttack == true)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
         {
-            StartCoroutine(Attacking());
+            StartCoroutine(Attack());
         }
     }
-    IEnumerator Attacking()
+
+    private IEnumerator Attack()
     {
         canAttack = false;
         attackZone.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         attackZone.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
     }
-
 }

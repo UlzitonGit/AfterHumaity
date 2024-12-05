@@ -5,22 +5,20 @@ using UnityEngine;
 public class Backtrack : MonoBehaviour
 {
    public float trackDuration = 4f;
-
    public float positionRecordInterval = 0.1f;
-
    public KeyCode backtrackKey = KeyCode.X;
 
    private Queue<PositionRecord> positionHistory = new Queue<PositionRecord>();
-   private Rigidbody2D PlayerRigidBody;
+   private Rigidbody2D playerRigidBody;
    private bool isBacktracking = false;
 
    void Start()
    {
-      PlayerRigidBody = GetComponent<Rigidbody2D>();
+      playerRigidBody = GetComponent<Rigidbody2D>();
       StartCoroutine(RecordPosition());
    }
 
-   private void Update()
+   void Update()
    {
       if (Input.GetKeyDown(backtrackKey) && !isBacktracking)
       {
@@ -32,24 +30,18 @@ public class Backtrack : MonoBehaviour
    {
       while (true)
       {
-
-         if (!isBacktracking)
+         if (!isBacktracking && (positionHistory.Count == 0 || positionHistory.Peek().position != transform.position))
          {
-            
-            if (positionHistory.Count == 0 || positionHistory.Peek().position != transform.position)
+            positionHistory.Enqueue(new PositionRecord
             {
-               positionHistory.Enqueue(new PositionRecord
-               {
-                  position = transform.position,
-                  time = Time.time
-               });
-            }
+               position = transform.position,
+               time = Time.time
+            });
+         }
 
-            
-            while (positionHistory.Count > 0 && positionHistory.Peek().time < Time.time - trackDuration)
-            {
-               positionHistory.Dequeue();
-            }
+         while (positionHistory.Count > 0 && positionHistory.Peek().time < Time.time - trackDuration)
+         {
+            positionHistory.Dequeue();
          }
 
          yield return new WaitForSeconds(positionRecordInterval);
@@ -61,11 +53,8 @@ public class Backtrack : MonoBehaviour
       if (positionHistory.Count == 0) yield break;
 
       isBacktracking = true;
-
-
-      PlayerRigidBody.velocity = Vector2.zero;
-      PlayerRigidBody.isKinematic = true;
-
+      playerRigidBody.velocity = Vector2.zero;
+      playerRigidBody.isKinematic = true;
 
       Vector3 targetPosition = positionHistory.Peek().position;
       foreach (var record in positionHistory)
@@ -76,17 +65,16 @@ public class Backtrack : MonoBehaviour
             break;
          }
       }
-      transform.position = targetPosition;
-      Debug.Log($"Backtracked to position: {targetPosition}");
 
-      
+      transform.position = targetPosition;
+      Debug.Log($"Backtracked to: {targetPosition}");
+
       yield return new WaitForSeconds(0.1f);
 
-      
-      PlayerRigidBody.isKinematic = false;
+      playerRigidBody.isKinematic = false;
       isBacktracking = false;
    }
-   
+
    private class PositionRecord
    {
       public Vector3 position;

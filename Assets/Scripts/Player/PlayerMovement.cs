@@ -4,136 +4,127 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Rigidbody2D rb;
-     Vector2 moveVector;
+    private Vector2 moveVector;
     [SerializeField] public float moveSpeed = 4f;
     [SerializeField] public float jumpForce = 4f;
     private bool isGrounded;
     private bool isOnHold;
-    [SerializeField] float jumpWallHorizontal = 10;
-    [SerializeField] Transform groundPos;
-    [SerializeField] Transform leftWallPos;
-    [SerializeField] Transform rightWallPos;
-    [SerializeField] LayerMask groundLayer;
-    [SerializeField] LayerMask wallLayer;
-    [SerializeField] Transform attackPoint;
-    [SerializeField] float dashPower;
+    [SerializeField] private float jumpWallHorizontal = 10f;
+    [SerializeField] private Transform groundPos;
+    [SerializeField] private Transform leftWallPos;
+    [SerializeField] private Transform rightWallPos;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float dashPower;
+
     private bool canJump = true;
     private bool isJumping = false;
     private int jumpCount = 0;
-    public bool isRightWall = false;
-    public bool isLeftWall = false;
-    bool isOnWall = false;
-    bool canDash = true;
-    bool isDashing = false;
-    bool wallJumpimg = false;
+    private bool isRightWall = false;
+    private bool isLeftWall = false;
+    private bool isOnWall = false;
+    private bool canDash = true;
+    private bool isDashing = false;
+    private bool wallJumping = false;
     public float dir = 1;
-    bool canDoubleJump;
+    private bool canDoubleJump = false;
+
     void Start()
     {
-        canDoubleJump = PlayerPrefs.GetString("canDoubleJump") == "true";
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 2f;
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
         CheckGround();
-        CheckLeft();
-        CheckRight();
+        CheckWall();
         Walk();
         Jump();
-        if (isRightWall == true || isLeftWall == true && isJumping == false)
-        {
-            rb.gravityScale = 0.1f;
-            if(isOnWall == false)
-            {
-                rb.velocity = new Vector3(0, 0, 0);
-                isOnWall = true;
-            }
-        }
-        if ((isRightWall == false && isLeftWall == false) || isJumping == true)
-        {
-            rb.gravityScale = 2;
-            isOnWall = false;
-        }
-        
+        HandleWallCollision();
     }
-    void Walk()
+
+    private void Walk()
     {
-        if (wallJumpimg == true || isDashing == true) return;
+        if (wallJumping || isDashing) return;
+
         moveVector.x = Input.GetAxis("Horizontal");
-        if(moveVector.x != 0) dir = moveVector.x;
+        if (moveVector.x != 0) dir = moveVector.x;
+
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
-        if (moveVector.x < 0) attackPoint.localRotation = Quaternion.Euler(0, 180, 0);
-        if (moveVector.x > 0) attackPoint.localRotation = Quaternion.Euler(0, 0, 0);
-        if (dir < 0) dir = -1;
-        else dir = 1;
+        attackPoint.localRotation = moveVector.x < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+
         if (Input.GetKey(KeyCode.F) && canDash)
         {
-            StartCoroutine(DashReload());      
+            StartCoroutine(DashReload());
         }
-
     }
-    void Jump()
+
+    public void CheckAbilities()
     {
-        if(isLeftWall == true && Input.GetKey(KeyCode.Space) && canJump == true)
+        canDoubleJump = PlayerPrefs.GetString("canDoubleJump") == "true";
+        Debug.Log(canDoubleJump);
+    }
+
+    private void Jump()
+    {
+        if ((isLeftWall || isRightWall) && Input.GetKey(KeyCode.Space) && canJump)
         {
             StartCoroutine(JumpWall());
-            rb.velocity = new Vector3(0, 0, 0);
-            rb.AddForce(new Vector2(jumpWallHorizontal, jumpForce) * 10);
-
-
+            rb.velocity = Vector3.zero;
+            float horizontalForce = isLeftWall ? jumpWallHorizontal : -jumpWallHorizontal;
+            rb.AddForce(new Vector2(horizontalForce, jumpForce) * 10);
         }
-        else if (isRightWall == true && Input.GetKey(KeyCode.Space) && canJump == true)
+        else if (Input.GetKey(KeyCode.Space) && (canDoubleJump == true && jumpCount > 0 || canDoubleJump == false && isGrounded == true) && canJump == true && wallJumping == false)
         {
-            StartCoroutine(JumpWall());
-            rb.velocity = new Vector3(0, 0, 0);
-            rb.AddForce(new Vector2(jumpWallHorizontal * -1, jumpForce) * 10);
-            
-        }
-        else if (Input.GetKey(KeyCode.Space) && (canDoubleJump == true && jumpCount > 0 || canDoubleJump == false && isGrounded == true) && canJump == true && wallJumpimg == false)
-        {          
             canJump = false;
             StartCoroutine(JumpReload());
             rb.velocity = new Vector3(0, 0, 0);
             rb.AddForce(Vector2.up * jumpForce * 10);
             jumpCount -= 1;
         }
-        
-
-
     }
-    public void CheckAbilities()
-    {
-        canDoubleJump = PlayerPrefs.GetString("canDoubleJump") == "true";
-    }
+
     private void CheckGround()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(groundPos.position, 0.1f, groundLayer);
-        isGrounded = collider.Length > 0;
-        if  (isGrounded == true && isJumping == false && canDoubleJump == false) jumpCount = 1;
-        if (isGrounded == true && isJumping == false && canDoubleJump == true) jumpCount = 2;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundPos.position, 0.1f, groundLayer);
+        isGrounded = colliders.Length > 0;
+
+        if (isGrounded && !isJumping)
+        {
+            jumpCount = canDoubleJump ? 2 : 1;
+        }
     }
-    private void CheckLeft()
+
+    private void CheckWall()
     {
-        
-        Collider2D[] collider = Physics2D.OverlapCircleAll(leftWallPos.position, 0.02f, wallLayer);
-        isLeftWall = collider.Length > 0;
-        
+        isLeftWall = Physics2D.OverlapCircle(leftWallPos.position, 0.02f, wallLayer);
+        isRightWall = Physics2D.OverlapCircle(rightWallPos.position, 0.02f, wallLayer);
     }
-    private void CheckRight()
+
+    private void HandleWallCollision()
     {
-        
-        Collider2D[] collider = Physics2D.OverlapCircleAll(rightWallPos.position, 0.02f, wallLayer);
-        isRightWall = collider.Length > 0;
+        if (isRightWall && isLeftWall && !isJumping)
+        {
+            rb.gravityScale = 0.1f;
+            if (!isOnWall)
+            {
+                rb.velocity = Vector3.zero;
+                isOnWall = true;
+            }
+        }
+        else if (!isRightWall && !isLeftWall && isJumping)
+        {
+            rb.gravityScale = 2;
+            isOnWall = false;
+        }
     }
-    IEnumerator JumpReload()
+
+    private IEnumerator JumpReload()
     {
         isJumping = true;
         yield return new WaitForSeconds(0.1f);
@@ -141,9 +132,9 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         canJump = true;
     }
-    IEnumerator DashReload()
+
+    private IEnumerator DashReload()
     {
-       
         canDash = false;
         isDashing = true;
         rb.AddForce(new Vector2(dir * dashPower, rb.velocity.y), ForceMode2D.Impulse);
@@ -152,15 +143,16 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         canDash = true;
     }
-    IEnumerator JumpWall()
+
+    private IEnumerator JumpWall()
     {
-        wallJumpimg = true;
+        wallJumping = true;
         isJumping = true;
         yield return new WaitForSeconds(0.1f);
         isJumping = false;
         yield return new WaitForSeconds(0.1f);
         canJump = true;
         yield return new WaitForSeconds(0.1f);
-        wallJumpimg = false;
+        wallJumping = false;
     }
 }

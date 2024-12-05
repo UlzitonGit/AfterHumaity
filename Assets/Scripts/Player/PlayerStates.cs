@@ -1,67 +1,76 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStates : MonoBehaviour
 {
-    [SerializeField] GameObject humanState;
-    [SerializeField] GameObject substanceState;
-    [SerializeField] Vector2 colliderOffsetHum;
-    [SerializeField] Vector2 colliderScaleHum;
-    [SerializeField] Vector2 colliderOffsetSub;
-    [SerializeField] Vector2 colliderScaleSub;
-    [SerializeField] CapsuleCollider2D capsuleCollider;
-    PlayerMovement playerMove;
-    bool isHuman = true;
-    bool canSwithch = true;
-    // Start is called before the first frame update
+    [SerializeField] private GameObject humanState;
+    [SerializeField] private GameObject substanceState;
+    [SerializeField] private Vector2 colliderOffsetHum;
+    [SerializeField] private Vector2 colliderScaleHum;
+    [SerializeField] private Vector2 colliderOffsetSub;
+    [SerializeField] private Vector2 colliderScaleSub;
+    [SerializeField] private CapsuleCollider2D capsuleCollider;
+
+    private PlayerMovement playerMove;
+    private bool isHuman = true;
+    private bool canSwitch = true;
+
     void Start()
     {
         playerMove = GetComponent<PlayerMovement>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Q) && canSwithch == true)
+        if (Input.GetKeyDown(KeyCode.Q) && canSwitch)
         {
             ChangeState();
         }
     }
+
     private void ChangeState()
     {
-        print("1");
-        if (canSwithch == false) return;
-        if(isHuman == true)
+        if (!canSwitch) return;
+
+        canSwitch = false;
+
+        if (isHuman)
         {
-            humanState.SetActive(false);
-            substanceState.SetActive(true);
-            capsuleCollider.size = colliderScaleSub;
-            capsuleCollider.offset = colliderOffsetSub;
-            playerMove.moveSpeed = playerMove.moveSpeed / 1.5f;
-            playerMove.jumpForce = playerMove.jumpForce / 1.5f;
-            isHuman = false;
-            print("2");
-            StartCoroutine(ReloadSwitching());
+            SwitchToSubstanceState();
         }
-        else if (isHuman == false)
+        else
         {
-            humanState.SetActive(true);
-            substanceState.SetActive(false);
-            capsuleCollider.size = colliderScaleHum;
-            capsuleCollider.offset = colliderOffsetHum;
-            playerMove.moveSpeed = playerMove.moveSpeed * 1.5f;
-            playerMove.jumpForce = playerMove.jumpForce * 1.5f;
-            isHuman =true;
-            print("3");
-            StartCoroutine(ReloadSwitching());
+            SwitchToHumanState();
         }
-      
+
+        StartCoroutine(ReloadSwitching());
     }
-    IEnumerator ReloadSwitching()
+
+    private void SwitchToSubstanceState()
     {
-        canSwithch = false;
+        humanState.SetActive(false);
+        substanceState.SetActive(true);
+        capsuleCollider.size = colliderScaleSub;
+        capsuleCollider.offset = colliderOffsetSub;
+        playerMove.moveSpeed /= 1.5f;
+        playerMove.jumpForce /= 1.5f;
+        isHuman = false;
+    }
+
+    private void SwitchToHumanState()
+    {
+        humanState.SetActive(true);
+        substanceState.SetActive(false);
+        capsuleCollider.size = colliderScaleHum;
+        capsuleCollider.offset = colliderOffsetHum;
+        playerMove.moveSpeed *= 1.5f;
+        playerMove.jumpForce *= 1.5f;
+        isHuman = true;
+    }
+
+    private IEnumerator ReloadSwitching()
+    {
         yield return new WaitForSeconds(0.5f);
-        canSwithch = true;
+        canSwitch = true;
     }
 }

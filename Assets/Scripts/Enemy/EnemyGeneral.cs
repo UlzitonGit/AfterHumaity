@@ -1,59 +1,53 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class EnemyGeneral : MonoBehaviour
 {
-    // Start is called before the first frame update
-    PlayerMovement player;
-    bool isRaged = false;
-    bool inAttackZone = false;
-    bool canAttack = true;
-    Rigidbody2D rb;
-    [SerializeField] float speed = 2;
-    [SerializeField] float rageRadius = 20;
-    [SerializeField] float attackRadius = 3;
-    [SerializeField] float attackDuration = 1;
-    float distanceBetweenPlayer;
-    void Start()
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float rageRadius = 20f;
+    [SerializeField] private float attackRadius = 3f;
+    [SerializeField] private float attackDuration = 1f;
+
+    private PlayerMovement player;
+    private Rigidbody2D rb;
+    private bool canAttack = true;
+
+    private void Start()
     {
-        player = FindAnyObjectByType<PlayerMovement>();
+        player = FindObjectOfType<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        distanceBetweenPlayer = transform.position.x - player.transform.position.x;
-        isRaged = Mathf.Abs(distanceBetweenPlayer) <= rageRadius;
-        inAttackZone = Mathf.Abs(distanceBetweenPlayer) <= attackRadius;
-        if(isRaged == true && distanceBetweenPlayer < 0)
+        float distanceToPlayer = transform.position.x - player.transform.position.x;
+        bool isRaged = Mathf.Abs(distanceToPlayer) <= rageRadius;
+        bool inAttackZone = Mathf.Abs(distanceToPlayer) <= attackRadius;
+
+        if (isRaged)
         {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
-            transform.localScale = new Vector3(1, 1, 1);
+            MoveTowardsPlayer(distanceToPlayer);
         }
-        if (isRaged == true && distanceBetweenPlayer > 0)
-        {
-           
-            rb.velocity = new Vector2(speed * -1, rb.velocity.y);
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        if (inAttackZone == true && canAttack == true)
+
+        if (inAttackZone && canAttack)
         {
             Attack();
-            StartCoroutine(AttackReloading());
+            StartCoroutine(AttackCooldown());
         }
-       
     }
-    IEnumerator AttackReloading()
+
+    private void MoveTowardsPlayer(float distance)
+    {
+        float direction = distance < 0 ? 1 : -1;
+        rb.velocity = new Vector2(speed * direction, rb.velocity.y);
+        transform.localScale = new Vector3(direction, 1, 1);
+    }
+
+    private IEnumerator AttackCooldown()
     {
         canAttack = false;
         yield return new WaitForSeconds(attackDuration);
         canAttack = true;
     }
-    public virtual void Attack()
-    {
-        
-    }
+    public virtual void Attack() { }
 }

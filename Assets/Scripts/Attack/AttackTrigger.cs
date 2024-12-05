@@ -1,20 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackTrigger : MonoBehaviour
 {
-    [SerializeField] float damage = 10;
-    public float damageRate = 1;
-    bool canDamage = true;
+    [SerializeField] private float damage = 10f;
+    public float damageRate = 1f;
+    private bool canDamage = true;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") && canDamage == true)
+        if (collision.CompareTag("Enemy") && canDamage)
         {
             collision.GetComponent<EnemyHealth>().GetDamage(damage);
+            //StartCoroutine(DamageCooldown());
         }
     }
-    IEnumerator Damage()
+
+    private IEnumerator DamageCooldown()
     {
         canDamage = false;
         yield return new WaitForSeconds(damageRate);

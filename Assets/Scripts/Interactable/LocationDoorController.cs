@@ -4,33 +4,26 @@ using UnityEngine;
 public class LocationDoorController : MonoBehaviour
 {
    private int keys = 5;
-
    private int collectedKeys = 0;
-
    public TextMeshProUGUI progressText;
-
    public GameObject door;
-
    public GameObject lockedMessage;
-
    public float messageDisplayTime = 3f;
    private float messageHideTime;
-   
-   private bool IsPlayerNearby = false;
+   private bool isPlayerNearby;
 
-   void Start()
+   private void Start()
    {
       UpdateProgressText();
-
       if (lockedMessage != null)
       {
          lockedMessage.SetActive(false);
       }
    }
 
-   void Update()
+   private void Update()
    {
-      if (IsPlayerNearby && Input.GetKeyDown(KeyCode.E))
+      if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
       {
          if (collectedKeys >= keys)
          {
@@ -38,64 +31,54 @@ public class LocationDoorController : MonoBehaviour
          }
          else
          {
-            Debug.Log("Not enough keys to open");
             ShowLockedMessage();
          }
       }
-      
-      if (IsPlayerNearby && Time.time >= messageHideTime)
+
+      if (Time.time >= messageHideTime)
       {
          lockedMessage.SetActive(false);
       }
    }
 
-   void OpenDoor()
+   private void ShowLockedMessage()
    {
-      if (door != null)
+      if (lockedMessage != null)
       {
-         door.SetActive(false);
+         lockedMessage.SetActive(true);
       }
+      messageHideTime = Time.time + messageDisplayTime;
    }
 
-   void ShowLockedMessage()
+   private void OpenDoor()
    {
-      if(lockedMessage != null) lockedMessage.SetActive(true);
-      messageHideTime = Time.time + messageDisplayTime;
+      door.SetActive(false);
    }
 
    public void CollectKeys()
    {
       collectedKeys++;
       UpdateProgressText();
+   }
 
-      if (collectedKeys > keys)
+   private void UpdateProgressText()
+   {
+      progressText.text = $"Keys: {collectedKeys}/{keys}";
+   }
+
+   private void OnTriggerEnter2D(Collider2D collision)
+   {
+      if (collision.CompareTag("Player"))
       {
-         collectedKeys = keys;
+         isPlayerNearby = true;
       }
    }
 
-   void UpdateProgressText()
+   private void OnTriggerExit2D(Collider2D collision)
    {
-      if (progressText != null)
+      if (collision.CompareTag("Player"))
       {
-         int remainingKeys = collectedKeys - keys;
-         progressText.text = $"Keys left : {remainingKeys}";
-      }
-   }
-
-   private void OnTriggerEnter2D(Collider2D other)
-   {
-      if (other.CompareTag("Player"))
-      {
-         IsPlayerNearby = true;
-      }
-   }
-
-   private void OnTriggerExit2D(Collider2D other)
-   {
-      if (other.gameObject.CompareTag("Player"))
-      {
-         IsPlayerNearby = false;
+         isPlayerNearby = false;
       }
    }
 }
