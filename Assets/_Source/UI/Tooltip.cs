@@ -9,10 +9,7 @@ public class Tooltip : MonoBehaviour
 
    void Start()
    {
-      if (tooltip != null)
-      {
-         tooltip.SetActive(false);
-      }
+      tooltip?.SetActive(false);
    }
 
    void ToggleTooltip()
@@ -40,9 +37,6 @@ public class Tooltip : MonoBehaviour
 
    void HideTooltip()
    {
-      if (tooltip != null)
-      {
-         tooltip.SetActive(false);
-      }
+      tooltip?.SetActive(false);
    }
 }

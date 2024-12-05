@@ -15,10 +15,7 @@ public class LocationDoorController : MonoBehaviour
    private void Start()
    {
       UpdateProgressText();
-      if (lockedMessage != null)
-      {
-         lockedMessage.SetActive(false);
-      }
+      lockedMessage?.SetActive(false);
    }
 
    private void Update()
@@ -43,10 +40,7 @@ public class LocationDoorController : MonoBehaviour
 
    private void ShowLockedMessage()
    {
-      if (lockedMessage != null)
-      {
-         lockedMessage.SetActive(true);
-      }
+      lockedMessage?.SetActive(true);
       messageHideTime = Time.time + messageDisplayTime;
    }
 

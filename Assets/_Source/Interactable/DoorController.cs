@@ -11,10 +11,7 @@ public class DoorController : MonoBehaviour
 
     private void Start()
     {
-        if (noKeyMessage != null)
-        {
-            noKeyMessage.SetActive(false);
-        }
+        noKeyMessage?.SetActive(false);
     }
 
     private void Update()
