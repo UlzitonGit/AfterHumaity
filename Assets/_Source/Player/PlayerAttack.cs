@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private GameObject attackZone;
+    [SerializeField] private Animator anim;
     [SerializeField] private float attackCooldown = 0.7f;
     private bool canAttack = true;
 
@@ -19,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
     {
         canAttack = false;
         attackZone.SetActive(true);
+        anim.SetTrigger("Attack");
         yield return new WaitForSeconds(0.2f);
         attackZone.SetActive(false);
         yield return new WaitForSeconds(attackCooldown);

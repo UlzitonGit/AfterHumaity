@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7591580744179622645}
   - component: {fileID: 7371296014684025482}
   - component: {fileID: 1525454582192282246}
+  - component: {fileID: 6314117167250206298}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -36,8 +37,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3016084363132740392}
-  - {fileID: 2208653593698021515}
   - {fileID: 4650025151295861727}
   - {fileID: 176422110324923555}
   - {fileID: 5484818912694596761}
@@ -79,8 +78,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.4, y: 0.75}
+  m_Offset: {x: 0.03273678, y: 0.18211472}
+  m_Size: {x: 0.7712593, y: 1.9258664}
   m_Direction: 0
 --- !u!50 &9169704323081519680
 Rigidbody2D:
@@ -123,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 9169704323081519680}
   moveSpeed: 4
-  jumpForce: 40
+  jumpForce: 55
   jumpWallHorizontal: 30
   groundPos: {fileID: 4650025151295861727}
   leftWallPos: {fileID: 176422110324923555}
@@ -131,11 +130,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 72
+  anim: {fileID: 4586094771663910957}
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
   attackPoint: {fileID: 8112914883515368482}
-  dashPower: 3
+  dashPower: 4
   dir: 1
 --- !u!114 &5581644241940386161
 MonoBehaviour:
@@ -200,6 +200,21 @@ MonoBehaviour:
   trackDuration: 4
   positionRecordInterval: 0.1
   backtrackKey: 120
+--- !u!114 &6314117167250206298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431895050904856641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6cd30c684819eb41a6b8c977595cff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxPiecesNum: {fileID: 0}
+  boxNum: {fileID: 0}
+  boxPiecesNeeded: 3
 --- !u!1 &1169052934215207929
 GameObject:
   m_ObjectHideFlags: 0
@@ -14788,7 +14803,7 @@ Transform:
   m_GameObject: {fileID: 3016425600141374058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.257, y: 0.028, z: 0}
+  m_LocalPosition: {x: -0.4, y: 0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15156,6 +15171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3016084363132740392}
   - component: {fileID: 5863448530062959561}
+  - component: {fileID: 4586094771663910957}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -15171,12 +15187,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4183781370402638100}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0, z: 0}
-  m_LocalScale: {x: 0.39012, y: 0.39012, z: 0.39012}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.6400001, y: 0.25, z: 0}
+  m_LocalScale: {x: 3.1650238, y: 3.1650238, z: 3.1650238}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4698875798560370026}
+  m_Father: {fileID: 8112914883515368482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5863448530062959561
 SpriteRenderer:
@@ -15221,8 +15237,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0, g: 0.6126497, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2a25ca5ed66f7e54c8e97c7ce3315866, type: 3}
+  m_Color: {r: 0, g: 0.61176443, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -15232,6 +15248,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4586094771663910957
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4183781370402638100}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cdf21b1bc1351b94dbda68fbb4135216, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4205593356818647776
 GameObject:
   m_ObjectHideFlags: 0
@@ -15257,12 +15295,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4205593356818647776}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2938, z: 0}
-  m_LocalScale: {x: 0.39012, y: 0.09625107, z: 0.39012}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.6400001, y: -0.27752, z: 0}
+  m_LocalScale: {x: 0.7004605, y: 0.1728188, z: 0.7004605}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4698875798560370026}
+  m_Father: {fileID: 8112914883515368482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &317667222648140480
 SpriteRenderer:
@@ -15343,7 +15381,7 @@ Transform:
   m_GameObject: {fileID: 4720443609802167335}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.395, z: 0}
+  m_LocalPosition: {x: 0.08, y: -0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15374,7 +15412,7 @@ Transform:
   m_GameObject: {fileID: 5377165020881530179}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.235, y: 0.028, z: 0}
+  m_LocalPosition: {x: 0.55, y: 0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15413,6 +15451,8 @@ Transform:
   - {fileID: 75600204807347922}
   - {fileID: 3059290524756860894}
   - {fileID: 6311033332804085757}
+  - {fileID: 3016084363132740392}
+  - {fileID: 2208653593698021515}
   m_Father: {fileID: 4698875798560370026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2088491898379813804
@@ -20352,7 +20392,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.82
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

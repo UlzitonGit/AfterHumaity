@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform leftWallPos;
     [SerializeField] private Transform rightWallPos;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Animator anim;
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float dashPower;
@@ -57,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
         attackPoint.localRotation = moveVector.x < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-
+        anim.SetBool("Walk", moveVector.x != 0);
         if (Input.GetKey(KeyCode.F) && canDash)
         {
             StartCoroutine(DashReload());
@@ -93,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundPos.position, 0.1f, groundLayer);
         isGrounded = colliders.Length > 0;
-
+        anim.SetBool("Jump", !isGrounded);
         if (isGrounded && !isJumping)
         {
             jumpCount = canDoubleJump ? 2 : 1;
