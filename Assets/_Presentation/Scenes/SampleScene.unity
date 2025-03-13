@@ -59256,6 +59256,18 @@ PrefabInstance:
       propertyPath: colliderOffsetHum.y
       value: 0.19
       objectReference: {fileID: 0}
+    - target: {fileID: 6140274402126052572, guid: fe1359353eed112409d90f6058ab4457, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.1201495
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140274402126052572, guid: fe1359353eed112409d90f6058ab4457, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.13167794
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140274402126052572, guid: fe1359353eed112409d90f6058ab4457, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.18867922
+      objectReference: {fileID: 0}
     - target: {fileID: 6314117167250206298, guid: fe1359353eed112409d90f6058ab4457, type: 3}
       propertyPath: boxNum
       value: 
