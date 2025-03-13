@@ -3147,7 +3147,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.03529358
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -53716,13 +53716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7642c88c3cc86439f30b7c3bad043d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackDuration: 4
-  positionRecordInterval: 0.1
-  backtrackKey: 120
-  playerRigidBody: {fileID: 0}
-  isBacktracking: 0
-  targetPosition: {x: 0, y: 0, z: 0}
-  duration: 4
 --- !u!212 &899291181
 SpriteRenderer:
   m_ObjectHideFlags: 0
