@@ -8,7 +8,6 @@ public class InventoryManager : MonoBehaviour
     InventoryList inventoryList = new InventoryList();
     [SerializeField] int boxPiecesNeeded = 3;
     [SerializeField] GameObject boxPreset;
-    [SerializeField] Transform player;
 
     private void Start()
     {
@@ -51,7 +50,7 @@ public class InventoryManager : MonoBehaviour
         {
             inventoryList.RemoveItem("Box", 1);
             Debug.Log("Crafted");
-            Instantiate(boxPreset, player.position, Quaternion.identity);
+            Instantiate(boxPreset, transform.position, Quaternion.identity);
             UpdateText() ;
         }
     }
