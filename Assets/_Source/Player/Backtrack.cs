@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Backtrack : MonoBehaviour
@@ -8,10 +9,12 @@ public class Backtrack : MonoBehaviour
    public float trackDuration = 4f;
    public float positionRecordInterval = 0.1f;
    public KeyCode backtrackKey = KeyCode.X;
+    public int cooldown;
 
    private Queue<PositionRecord> positionHistory = new Queue<PositionRecord>();
    private Rigidbody2D playerRigidBody;
    private bool isBacktracking = false;
+    private bool canBacktrack = true;
 
    public GameObject clonePrefab;
 
@@ -23,15 +26,23 @@ public class Backtrack : MonoBehaviour
 
    void Update()
    {
-      if (Input.GetKeyDown(backtrackKey) && !isBacktracking)
+      if (Input.GetKeyDown(backtrackKey) && !isBacktracking && canBacktrack)
       {
          StartCoroutine(ExecuteBacktrack());
+            StartCoroutine(Cooldown());
       }
 
        if (clonePrefab && positionHistory.Count > 0)
         {
             clonePrefab.transform.position = positionHistory.Peek().position;
         }
+    }
+
+    IEnumerator Cooldown()
+    {
+        canBacktrack = false;
+        yield return new WaitForSeconds(cooldown);
+        canBacktrack = true;
     }
 
    IEnumerator RecordPosition()
