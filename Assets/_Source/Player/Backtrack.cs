@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,12 +16,13 @@ public class Backtrack : MonoBehaviour
    private Rigidbody2D playerRigidBody;
    private bool isBacktracking = false;
     private bool canBacktrack = true;
+    public TMP_Text text;
 
-   public GameObject clonePrefab;
+    public GameObject clonePrefab;
 
    void Start()
    {
-      playerRigidBody = GetComponent<Rigidbody2D>();
+        playerRigidBody = GetComponent<Rigidbody2D>();
       StartCoroutine(RecordPosition());
    }
 
@@ -30,7 +32,7 @@ public class Backtrack : MonoBehaviour
       {
          StartCoroutine(ExecuteBacktrack());
             StartCoroutine(Cooldown());
-      }
+        }
 
        if (clonePrefab && positionHistory.Count > 0)
         {
