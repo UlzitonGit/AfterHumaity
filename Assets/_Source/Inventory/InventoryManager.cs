@@ -7,6 +7,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] TMP_Text boxNum;
     InventoryList inventoryList = new InventoryList();
     [SerializeField] int boxPiecesNeeded = 3;
+    [SerializeField] GameObject boxPreset;
+    [SerializeField] Transform player;
 
     private void Start()
     {
@@ -42,5 +44,15 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("Not enough pieces!");
         }
         UpdateText();
+    }
+    public void TryPlaceBox()
+    {
+        if (inventoryList.GetItem("Box") >= 1)
+        {
+            inventoryList.RemoveItem("Box", 1);
+            Debug.Log("Crafted");
+            Instantiate(boxPreset, player.position, Quaternion.identity);
+            UpdateText() ;
+        }
     }
 }

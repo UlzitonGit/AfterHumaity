@@ -31135,8 +31135,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.737, y: -4.4285}
-  m_SizeDelta: {x: 466.56, y: 336.8027}
+  m_AnchoredPosition: {x: 9.476807, y: -7.0545654}
+  m_SizeDelta: {x: 490.03, y: 379.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596559722
 MonoBehaviour:
@@ -31174,7 +31174,9 @@ MonoBehaviour:
     Fire Attack - RMB
 
     Interact
-    - E'
+    - E
+
+    Craft - TAB'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -50519,6 +50521,78 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00048828, y: 0.0012817}
   m_SizeDelta: {x: 756.3, y: 756.29}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1163460949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5347263921418187438, guid: d9095b8ea42a60f41914d666cac03ea8, type: 3}
+  m_PrefabInstance: {fileID: 1699491013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1163460950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 624557969001765920, guid: d9095b8ea42a60f41914d666cac03ea8, type: 3}
+  m_PrefabInstance: {fileID: 1699491013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163460949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1163460952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163460949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1163460950}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 769409674}
+        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_MethodName: TryPlaceBox
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1204148072
 GameObject:
   m_ObjectHideFlags: 0
@@ -52455,7 +52529,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1449157041170461061, guid: d9095b8ea42a60f41914d666cac03ea8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1126716340}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5347263921418187438, guid: d9095b8ea42a60f41914d666cac03ea8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1163460952}
   m_SourcePrefab: {fileID: 100100000, guid: d9095b8ea42a60f41914d666cac03ea8, type: 3}
 --- !u!1 &1717111524
 GameObject:
@@ -58267,8 +58344,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 714.9839, y: -367.17053}
-  m_SizeDelta: {x: -1429.9677, y: -734.3409}
+  m_AnchoredPosition: {x: 705.54, y: 343.33}
+  m_SizeDelta: {x: -1411.0742, y: -686.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1956183201
 MonoBehaviour:
@@ -59413,6 +59490,14 @@ PrefabInstance:
       propertyPath: boxNum
       value: 
       objectReference: {fileID: 1126716341}
+    - target: {fileID: 6314117167250206298, guid: fe1359353eed112409d90f6058ab4457, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1662801220}
+    - target: {fileID: 6314117167250206298, guid: fe1359353eed112409d90f6058ab4457, type: 3}
+      propertyPath: boxPreset
+      value: 
+      objectReference: {fileID: 1655845515801045288, guid: c98025fbeaaca484b8c5a4139ca31abe, type: 3}
     - target: {fileID: 6314117167250206298, guid: fe1359353eed112409d90f6058ab4457, type: 3}
       propertyPath: boxPiecesNum
       value: 

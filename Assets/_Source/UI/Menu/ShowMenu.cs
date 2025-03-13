@@ -23,6 +23,17 @@ public class ShowMenu : MonoBehaviour
         {
             Hide();
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            Cursor.visible = false;
+            Cursor.lockState= CursorLockMode.Locked;
+        }
     }
 
     void Show()
