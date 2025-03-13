@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Backtrack : MonoBehaviour
@@ -11,6 +12,8 @@ public class Backtrack : MonoBehaviour
    private Queue<PositionRecord> positionHistory = new Queue<PositionRecord>();
    private Rigidbody2D playerRigidBody;
    private bool isBacktracking = false;
+
+   public GameObject clonePrefab;
 
    void Start()
    {
@@ -24,7 +27,12 @@ public class Backtrack : MonoBehaviour
       {
          StartCoroutine(ExecuteBacktrack());
       }
-   }
+
+       if (clonePrefab && positionHistory.Count > 0)
+        {
+            clonePrefab.transform.position = positionHistory.Peek().position;
+        }
+    }
 
    IEnumerator RecordPosition()
    {
@@ -48,6 +56,7 @@ public class Backtrack : MonoBehaviour
       }
    }
 
+
    IEnumerator ExecuteBacktrack()
    {
       if (positionHistory.Count == 0) yield break;
@@ -57,6 +66,7 @@ public class Backtrack : MonoBehaviour
       playerRigidBody.isKinematic = true;
 
       Vector3 targetPosition = positionHistory.Peek().position;
+
       foreach (var record in positionHistory)
       {
          if (record.time >= Time.time - trackDuration)

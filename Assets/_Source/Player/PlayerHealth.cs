@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthBar;
 
     private FirstEnemy firstEnemy;
+    [SerializeField] int damage = 10;
     private bool canTakeDamage = true;
 
     private void Start()
@@ -29,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void TakeDamage()
     {
-        currentHealth -= firstEnemy.damage;
+        currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
