@@ -49,7 +49,8 @@ public class Backtrack : MonoBehaviour
 
    IEnumerator RecordPosition()
    {
-      while (true)
+        int maxRecords = Mathf.CeilToInt(trackDuration / positionRecordInterval);
+        while (true)
       {
          if (!isBacktracking && (positionHistory.Count == 0 || positionHistory.Peek().position != transform.position))
          {
@@ -58,7 +59,12 @@ public class Backtrack : MonoBehaviour
                position = transform.position,
                time = Time.time
             });
-         }
+
+                while (positionHistory.Count > maxRecords)
+                {
+                    positionHistory.Dequeue();
+                }
+            }
 
          while (positionHistory.Count > 0 && positionHistory.Peek().time < Time.time - trackDuration)
          {
