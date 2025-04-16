@@ -4,8 +4,10 @@ public class InteractChest : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] KeyCode interactKey = KeyCode.E;
+    [SerializeField] private string ability;
     bool playerInRange = false;
     bool isOpened = false;
+    GameObject player;
 
     private void Update()
     {
@@ -18,13 +20,15 @@ public class InteractChest : MonoBehaviour
     {
         isOpened = true;
         animator.SetTrigger("Play");
-        Debug.Log("Ok");
+        PlayerPrefs.SetString(ability, "true");
+        player.GetComponent<PlayerMovement>().CheckAbilities();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            player = other.gameObject;
             playerInRange = true;
         }
     }
