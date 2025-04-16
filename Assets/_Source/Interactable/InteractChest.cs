@@ -20,7 +20,7 @@ public class InteractChest : MonoBehaviour
     {
         isOpened = true;
         animator.SetTrigger("Play");
-        PlayerPrefs.SetString(ability, "true");
+        PlayerPrefs.SetInt(ability, 1);
         player.GetComponent<PlayerMovement>().CheckAbilities();
     }
 

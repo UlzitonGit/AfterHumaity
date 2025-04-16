@@ -545,7 +545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &138797122
 Transform:
   m_ObjectHideFlags: 0
@@ -44863,7 +44863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &693420594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45030,7 +45030,7 @@ GameObject:
   - component: {fileID: 726590330}
   - component: {fileID: 726590329}
   m_Layer: 0
-  m_Name: Chest (1)
+  m_Name: FireAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45050,7 +45050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 726590331}
   interactKey: 101
-  ability: 
+  ability: canFireAttack
 --- !u!61 &726590330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69207,9 +69207,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 44062531}
-  - {fileID: 138797122}
   - {fileID: 1347675540}
   - {fileID: 726590333}
+  - {fileID: 138797122}
   - {fileID: 693420598}
   - {fileID: 1642142900}
   - {fileID: 1856775929}
@@ -75390,7 +75390,7 @@ GameObject:
   - component: {fileID: 1347675541}
   - component: {fileID: 1347675542}
   m_Layer: 0
-  m_Name: Chest
+  m_Name: Dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75547,7 +75547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1347675538}
   interactKey: 101
-  ability: 
+  ability: canDash
 --- !u!1 &1410032723
 GameObject:
   m_ObjectHideFlags: 0
@@ -75761,7 +75761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 513195390195796494, guid: ded2aa75997d7e243b19178915e92fc1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2947723086349718579, guid: ded2aa75997d7e243b19178915e92fc1, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -75995,7 +75995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1642142896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76258,7 +76258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1646571822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76430,7 +76430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1652289580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82202,6 +82202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilitySphere (Dash)
       objectReference: {fileID: 0}
+    - target: {fileID: 513195390195796494, guid: ded2aa75997d7e243b19178915e92fc1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2947723086349718579, guid: ded2aa75997d7e243b19178915e92fc1, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.4
@@ -82323,7 +82327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1856775925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83233,7 +83237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2135186229
 Transform:
   m_ObjectHideFlags: 0

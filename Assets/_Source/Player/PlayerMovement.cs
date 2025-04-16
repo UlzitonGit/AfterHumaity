@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private bool wallJumping = false;
     public float dir = 1;
     private bool canDoubleJump = false;
+    private bool dashUnlocked = false;
 
     void Start()
     {
@@ -59,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
         attackPoint.localRotation = moveVector.x < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         anim.SetBool("Walk", moveVector.x != 0);
-        if (Input.GetKey(KeyCode.F) && canDash)
+        if (Input.GetKey(KeyCode.F) && canDash && dashUnlocked)
         {
             StartCoroutine(DashReload());
         }
@@ -67,8 +68,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void CheckAbilities()
     {
-        canDoubleJump = PlayerPrefs.GetString("canDoubleJump") == "true";
-        Debug.Log(canDoubleJump);
+        canDoubleJump = PlayerPrefs.GetInt("canDoubleJump", 0) == 1;
+        dashUnlocked = PlayerPrefs.GetInt("canDash", 0) == 1;
+
+        Debug.Log($"DoubleJump: {canDoubleJump}, Dash: {dashUnlocked}");
     }
 
     private void Jump()

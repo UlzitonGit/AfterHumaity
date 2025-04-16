@@ -8,7 +8,7 @@ public class FlameThrower : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse1) && PlayerPrefs.GetInt("canFireAttack", 0) == 1)
         {
             ActivateFlame();
         }
