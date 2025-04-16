@@ -6,6 +6,11 @@ public class FlameThrower : MonoBehaviour
     [SerializeField] private GameObject flameHitbox;
     private bool isFlameActive = false;
 
+    private void Awake()
+    {
+        PlayerPrefs.SetInt("canFireAttack", 0);
+    }
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.Mouse1) && PlayerPrefs.GetInt("canFireAttack", 0) == 1)
