@@ -44710,7 +44710,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 693420596}
-  animationTrigger: Play
   interactKey: 101
 --- !u!61 &693420595
 BoxCollider2D:
@@ -44882,7 +44881,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 726590331}
-  animationTrigger: Play
   interactKey: 101
 --- !u!61 &726590330
 BoxCollider2D:
@@ -44938,7 +44936,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726590328}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a8ad945f07dc937438972ca686ac8f05, type: 2}
   m_CullingMode: 0
@@ -75236,7 +75234,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347675537}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a8ad945f07dc937438972ca686ac8f05, type: 2}
   m_CullingMode: 0
@@ -75378,7 +75376,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1347675538}
-  animationTrigger: Play
   interactKey: 101
 --- !u!1 &1410032723
 GameObject:
@@ -75853,7 +75850,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1642142898}
-  animationTrigger: Play
   interactKey: 101
 --- !u!61 &1642142897
 BoxCollider2D:
@@ -76116,7 +76112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1646571824}
-  animationTrigger: Play
   interactKey: 101
 --- !u!61 &1646571823
 BoxCollider2D:
@@ -76288,7 +76283,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1652289582}
-  animationTrigger: Play
   interactKey: 101
 --- !u!61 &1652289581
 BoxCollider2D:
@@ -82181,7 +82175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1856775927}
-  animationTrigger: Play
   interactKey: 101
 --- !u!61 &1856775926
 BoxCollider2D:

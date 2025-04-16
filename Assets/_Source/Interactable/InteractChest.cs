@@ -2,36 +2,38 @@ using UnityEngine;
 
 public class InteractChest : MonoBehaviour
 {
-    public Animator animator;
-    public string animationTrigger = "Play";
-    public KeyCode interactKey = KeyCode.E;
+    [SerializeField] Animator animator;
+    [SerializeField] KeyCode interactKey = KeyCode.E;
+    bool playerInRange = false;
+    bool isOpened = false;
 
-    private bool isPlayerNear = false;
-
-    void Update()
+    private void Update()
     {
-        if (isPlayerNear && Input.GetKeyDown(interactKey))
+        if (playerInRange && Input.GetKeyDown(interactKey) && !isOpened)
         {
-            if (animator != null)
-            {
-                animator.SetTrigger(animationTrigger);
-            }
+            OpenChest();
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OpenChest()
     {
-        if(other.CompareTag ("Player"))
-        {
-            isPlayerNear = true;
-        }
+        isOpened = true;
+        animator.SetTrigger("Play");
+        Debug.Log("Ok");
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerNear = false;
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
         }
     }
 }
