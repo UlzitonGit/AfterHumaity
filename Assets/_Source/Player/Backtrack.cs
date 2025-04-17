@@ -22,7 +22,7 @@ public class Backtrack : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.SetInt("canBacktrack", 0);
+        PlayerPrefs.SetInt("Backtrack", 0);
     }
 
     void Start()
@@ -33,13 +33,13 @@ public class Backtrack : MonoBehaviour
 
    void Update()
    {
-      if (Input.GetKeyDown(backtrackKey) && !isBacktracking && canBacktrack && PlayerPrefs.GetInt("canBacktrack", 0) == 1)
+      if (Input.GetKeyDown(backtrackKey) && !isBacktracking && canBacktrack && PlayerPrefs.GetInt("Backtrack", 0) == 1)
       {
          StartCoroutine(ExecuteBacktrack());
             StartCoroutine(Cooldown());
         }
 
-       if (clonePrefab && positionHistory.Count > 0 && PlayerPrefs.GetInt("canBacktrack", 0) == 1)
+       if (clonePrefab && positionHistory.Count > 0 && PlayerPrefs.GetInt("Backtrack", 0) == 1)
         {
             if (!clonePrefab.gameObject.activeInHierarchy)
             {

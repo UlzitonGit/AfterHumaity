@@ -42,6 +42,7 @@ Transform:
   - {fileID: 5484818912694596761}
   - {fileID: 7843280139070892293}
   - {fileID: 8112914883515368482}
+  - {fileID: 2208653593698021515}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &6225174548842452264
@@ -169,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackZone: {fileID: 3570701795157587098}
+  anim: {fileID: 0}
   attackCooldown: 0.7
 --- !u!114 &7371296014684025482
 MonoBehaviour:
@@ -185,6 +187,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
+  damage: 10
 --- !u!114 &1525454582192282246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +203,9 @@ MonoBehaviour:
   trackDuration: 4
   positionRecordInterval: 0.1
   backtrackKey: 120
+  cooldown: 0
+  text: {fileID: 0}
+  clonePrefab: {fileID: 0}
 --- !u!114 &6314117167250206298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +221,7 @@ MonoBehaviour:
   boxPiecesNum: {fileID: 0}
   boxNum: {fileID: 0}
   boxPiecesNeeded: 3
+  boxPreset: {fileID: 0}
 --- !u!1 &1169052934215207929
 GameObject:
   m_ObjectHideFlags: 0
@@ -15300,7 +15307,7 @@ Transform:
   m_LocalScale: {x: 0.7004605, y: 0.1728188, z: 0.7004605}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8112914883515368482}
+  m_Father: {fileID: 4698875798560370026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &317667222648140480
 SpriteRenderer:
@@ -15452,7 +15459,6 @@ Transform:
   - {fileID: 3059290524756860894}
   - {fileID: 6311033332804085757}
   - {fileID: 3016084363132740392}
-  - {fileID: 2208653593698021515}
   m_Father: {fileID: 4698875798560370026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2088491898379813804

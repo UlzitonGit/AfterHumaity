@@ -55,11 +55,15 @@ public class PlayerMovement : MonoBehaviour
         if (wallJumping || isDashing) return;
 
         moveVector.x = Input.GetAxis("Horizontal");
-        if (moveVector.x != 0) dir = moveVector.x;
+        if (moveVector.x != 0)
+        {
+            dir = moveVector.x;
+            attackPoint.localRotation = dir < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        }
 
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
-        attackPoint.localRotation = moveVector.x < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         anim.SetBool("Walk", moveVector.x != 0);
+
         if (Input.GetKey(KeyCode.F) && canDash && dashUnlocked)
         {
             StartCoroutine(DashReload());
@@ -68,8 +72,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void CheckAbilities()
     {
-        canDoubleJump = PlayerPrefs.GetInt("canDoubleJump", 0) == 1;
-        dashUnlocked = PlayerPrefs.GetInt("canDash", 0) == 1;
+        canDoubleJump = PlayerPrefs.GetInt("Double Jump", 0) == 1;
+        dashUnlocked = PlayerPrefs.GetInt("Dash", 0) == 1;
     }
 
     private void Jump()

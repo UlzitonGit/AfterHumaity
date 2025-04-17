@@ -8,12 +8,12 @@ public class FlameThrower : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.SetInt("canFireAttack", 0);
+        PlayerPrefs.SetInt("Fire Attack", 0);
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse1) && PlayerPrefs.GetInt("canFireAttack", 0) == 1)
+        if (Input.GetKey(KeyCode.Mouse1) && PlayerPrefs.GetInt("Fire Attack", 0) == 1)
         {
             ActivateFlame();
         }

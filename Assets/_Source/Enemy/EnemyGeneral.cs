@@ -29,7 +29,6 @@ public class EnemyGeneral : MonoBehaviour
         {
             MoveTowardsPlayer(distanceToPlayer);
         }
-        Debug.Log(inAttackZone && canAttack);
 
         if (inAttackZone && canAttack)
         {
