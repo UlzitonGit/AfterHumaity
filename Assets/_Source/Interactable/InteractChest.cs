@@ -1,13 +1,21 @@
 using UnityEngine;
+using TMPro;
 
 public class InteractChest : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] KeyCode interactKey = KeyCode.E;
-    [SerializeField] private string ability;
+    [SerializeField] int score;
     bool playerInRange = false;
     bool isOpened = false;
     GameObject player;
+    private GameManager gameManager;
+    public TextMeshProUGUI scoreText;
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
 
     private void Update()
     {
@@ -20,8 +28,9 @@ public class InteractChest : MonoBehaviour
     {
         isOpened = true;
         animator.SetTrigger("Play");
-        PlayerPrefs.SetInt(ability, 1);
-        player.GetComponent<PlayerMovement>().CheckAbilities();
+        gameManager.score += score;
+        scoreText.text = "Score: " + gameManager.score.ToString();
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)

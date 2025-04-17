@@ -8,7 +8,7 @@ public class AbilityUnlock : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerPrefs.SetString(ability, "true");
+            PlayerPrefs.SetInt(ability, 1);
             collision.GetComponent<PlayerMovement>().CheckAbilities();
             Destroy(gameObject);
         }

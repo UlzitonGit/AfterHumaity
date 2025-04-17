@@ -20,7 +20,12 @@ public class Backtrack : MonoBehaviour
 
     public GameObject clonePrefab;
 
-   void Start()
+    private void Awake()
+    {
+        PlayerPrefs.SetInt("canBacktrack", 0);
+    }
+
+    void Start()
    {
         playerRigidBody = GetComponent<Rigidbody2D>();
       StartCoroutine(RecordPosition());
@@ -28,14 +33,18 @@ public class Backtrack : MonoBehaviour
 
    void Update()
    {
-      if (Input.GetKeyDown(backtrackKey) && !isBacktracking && canBacktrack)
+      if (Input.GetKeyDown(backtrackKey) && !isBacktracking && canBacktrack && PlayerPrefs.GetInt("canBacktrack", 0) == 1)
       {
          StartCoroutine(ExecuteBacktrack());
             StartCoroutine(Cooldown());
         }
 
-       if (clonePrefab && positionHistory.Count > 0)
+       if (clonePrefab && positionHistory.Count > 0 && PlayerPrefs.GetInt("canBacktrack", 0) == 1)
         {
+            if (!clonePrefab.gameObject.activeInHierarchy)
+            {
+                clonePrefab.gameObject.SetActive(true);
+            }
             clonePrefab.transform.position = positionHistory.Peek().position;
         }
     }

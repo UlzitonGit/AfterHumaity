@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 44062534}
   - component: {fileID: 44062533}
   m_Layer: 0
-  m_Name: DoubleJump
+  m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 44062530}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7, y: -1.27, z: 0.0040497193}
+  m_LocalPosition: {x: 3.44, y: -1.27, z: 0.0040497193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -173,7 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 44062535}
   interactKey: 101
-  ability: canDoubleJump
+  score: 200
+  scoreText: {fileID: 809907772}
 --- !u!61 &44062534
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -660,7 +661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77233ee0c680d1f4ca1494ba138a9dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: canDoubleJump
+  ability: canFireAttack
 --- !u!1 &110687073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1138,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1922618023944533100, guid: 1e417c3e47fb97141b74eff9566fd05c, type: 3}
   m_PrefabInstance: {fileID: 352608612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &407219320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 513195390195796494, guid: ded2aa75997d7e243b19178915e92fc1, type: 3}
+  m_PrefabInstance: {fileID: 1460599259}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &439915111
 GameObject:
@@ -1638,7 +1644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77233ee0c680d1f4ca1494ba138a9dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: canDoubleJump
+  ability: canBacktrack
 --- !u!1001 &457442062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45291,7 +45297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 693420596}
   interactKey: 101
-  ability: 
+  score: 0
+  scoreText: {fileID: 0}
 --- !u!61 &693420595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45443,7 +45450,7 @@ GameObject:
   - component: {fileID: 726590330}
   - component: {fileID: 726590329}
   m_Layer: 0
-  m_Name: FireAttack
+  m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45463,7 +45470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 726590331}
   interactKey: 101
-  ability: canFireAttack
+  score: 200
+  scoreText: {fileID: 809907772}
 --- !u!61 &726590330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74885,6 +74893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2474099529359381423, guid: 46175a0b260ec3a4ebc24dcb707b5394, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75581,6 +75593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square
       objectReference: {fileID: 0}
+    - target: {fileID: 2474099529359381423, guid: 46175a0b260ec3a4ebc24dcb707b5394, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75743,7 +75759,7 @@ GameObject:
   - component: {fileID: 1347675541}
   - component: {fileID: 1347675542}
   m_Layer: 0
-  m_Name: Dash
+  m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75900,7 +75916,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1347675538}
   interactKey: 101
-  ability: canDash
+  score: 200
+  scoreText: {fileID: 809907772}
 --- !u!1 &1410032723
 GameObject:
   m_ObjectHideFlags: 0
@@ -76124,13 +76141,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5394410873052973843, guid: ded2aa75997d7e243b19178915e92fc1, type: 3}
       insertIndex: 4
       addedObject: {fileID: 1784579742}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 513195390195796494, guid: ded2aa75997d7e243b19178915e92fc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1460599261}
   m_SourcePrefab: {fileID: 100100000, guid: ded2aa75997d7e243b19178915e92fc1, type: 3}
 --- !u!4 &1460599260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5394410873052973843, guid: ded2aa75997d7e243b19178915e92fc1, type: 3}
   m_PrefabInstance: {fileID: 1460599259}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1460599261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407219320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77233ee0c680d1f4ca1494ba138a9dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: canDoubleJump
 --- !u!4 &1536750043 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8112914883515368482, guid: fe1359353eed112409d90f6058ab4457, type: 3}
@@ -76456,7 +76489,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1642142898}
   interactKey: 101
-  ability: 
+  score: 0
+  scoreText: {fileID: 0}
 --- !u!61 &1642142897
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -76719,7 +76753,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1646571824}
   interactKey: 101
-  ability: 
+  score: 0
+  scoreText: {fileID: 0}
 --- !u!61 &1646571823
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -76891,7 +76926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1652289582}
   interactKey: 101
-  ability: 
+  score: 0
+  scoreText: {fileID: 0}
 --- !u!61 &1652289581
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -82852,7 +82888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77233ee0c680d1f4ca1494ba138a9dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: canDoubleJump
+  ability: canDash
 --- !u!1 &1856775924
 GameObject:
   m_ObjectHideFlags: 0
@@ -82887,7 +82923,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1856775927}
   interactKey: 101
-  ability: 
+  score: 0
+  scoreText: {fileID: 0}
 --- !u!61 &1856775926
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -83334,6 +83371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clone
       objectReference: {fileID: 0}
+    - target: {fileID: 3929113737914283093, guid: a4e544b26ce385f4983c91e5fe059735, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6524986715305484020, guid: a4e544b26ce385f4983c91e5fe059735, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.3
@@ -83655,7 +83696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2135186229
 Transform:
   m_ObjectHideFlags: 0
@@ -84052,19 +84093,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5581644241940386161, guid: fe1359353eed112409d90f6058ab4457, type: 3}
       propertyPath: colliderScaleHum.x
-      value: 0.8
+      value: 0.7712593
       objectReference: {fileID: 0}
     - target: {fileID: 5581644241940386161, guid: fe1359353eed112409d90f6058ab4457, type: 3}
       propertyPath: colliderScaleHum.y
-      value: 0.19
+      value: 1.925866
       objectReference: {fileID: 0}
     - target: {fileID: 5581644241940386161, guid: fe1359353eed112409d90f6058ab4457, type: 3}
       propertyPath: colliderOffsetHum.x
-      value: 0.03
+      value: 0.03273678
       objectReference: {fileID: 0}
     - target: {fileID: 5581644241940386161, guid: fe1359353eed112409d90f6058ab4457, type: 3}
       propertyPath: colliderOffsetHum.y
-      value: 0.19
+      value: 0.1821147
       objectReference: {fileID: 0}
     - target: {fileID: 6140274402126052572, guid: fe1359353eed112409d90f6058ab4457, type: 3}
       propertyPath: m_BackGroundColor.b
