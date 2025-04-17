@@ -70,8 +70,6 @@ public class PlayerMovement : MonoBehaviour
     {
         canDoubleJump = PlayerPrefs.GetInt("canDoubleJump", 0) == 1;
         dashUnlocked = PlayerPrefs.GetInt("canDash", 0) == 1;
-
-        Debug.Log($"DoubleJump: {canDoubleJump}, Dash: {dashUnlocked}");
     }
 
     private void Jump()

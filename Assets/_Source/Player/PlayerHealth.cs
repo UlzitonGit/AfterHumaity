@@ -8,13 +8,11 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
-    private FirstEnemy firstEnemy;
     [SerializeField] int damage = 10;
     private bool canTakeDamage = true;
 
     private void Start()
     {
-        firstEnemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<FirstEnemy>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -28,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void TakeDamage()
+    public void TakeDamage()
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
@@ -42,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator DamageCooldown()
     {
         canTakeDamage = false;
-        yield return new WaitForSeconds(firstEnemy.attackCooldown);
+        yield return new WaitForSeconds(1);
         canTakeDamage = true;
     }
 

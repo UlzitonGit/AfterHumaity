@@ -4,15 +4,16 @@ using System.Collections;
 public class EnemyGeneral : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
-    [SerializeField] private float rageRadius = 20f;
+    [SerializeField] public float rageRadius = 20f;
     [SerializeField] private float attackRadius = 3f;
     [SerializeField] private float attackDuration = 1f;
+    public SpriteRenderer spriteRenderer;
 
-    private PlayerMovement player;
+    public PlayerMovement player;
     private Rigidbody2D rb;
     private bool canAttack = true;
 
-    private void Start()
+    protected void Start()
     {
         player = FindObjectOfType<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
@@ -28,6 +29,7 @@ public class EnemyGeneral : MonoBehaviour
         {
             MoveTowardsPlayer(distanceToPlayer);
         }
+        Debug.Log(inAttackZone && canAttack);
 
         if (inAttackZone && canAttack)
         {
@@ -38,9 +40,9 @@ public class EnemyGeneral : MonoBehaviour
 
     private void MoveTowardsPlayer(float distance)
     {
-        float direction = distance < 0 ? 1 : -1;
+        float direction = distance < 0 ? 2 : -2;
         rb.velocity = new Vector2(speed * direction, rb.velocity.y);
-        transform.localScale = new Vector3(direction, 1, 1);
+        transform.localScale = new Vector3(direction, 2, 2);
     }
 
     private IEnumerator AttackCooldown()

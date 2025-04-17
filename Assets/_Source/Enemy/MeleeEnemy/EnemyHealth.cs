@@ -4,14 +4,16 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private ParticleSystem flame;
-    [SerializeField] private float health = 100f;
+    [SerializeField] public float health = 100f;
     private FirstEnemy firstEnemy;
+    private SecondEnemy secondEnemy;
     private GameManager gameManager;
     public TextMeshProUGUI scoreText;
 
     private void Start()
     {
         firstEnemy = GetComponent<FirstEnemy>();
+        secondEnemy = GetComponent<SecondEnemy>();
         gameManager = FindObjectOfType<GameManager>();
     }
 
@@ -20,8 +22,16 @@ public class EnemyHealth : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            gameManager.score += firstEnemy.score;
-            scoreText.text = $"Score: {gameManager.score}";
+            if (firstEnemy != null)
+            {
+                gameManager.score += firstEnemy.score;
+            }
+            else if (secondEnemy != null)
+            {
+                gameManager.score += 150;
+            }
+
+            scoreText.text = "Score: " + gameManager.score.ToString();
             Destroy(gameObject);
         }
     }

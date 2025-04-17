@@ -33,6 +33,7 @@ public class FlameThrower : MonoBehaviour
                 flameParticle.maxParticles = 2000;
             }
             flameHitbox.SetActive(true);
+
         }
     }
 
