@@ -84,6 +84,7 @@ public class Boss : MonoBehaviour
     private void EnterPhase3()
     {
         text.text = "Boss enters Final phase! Atk+, HP-";
+        text.gameObject.SetActive(true);
         currentPhase = 3;
         damage = 20;
         isInFinalPhase = true;

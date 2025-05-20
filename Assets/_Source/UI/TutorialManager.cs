@@ -11,6 +11,7 @@ namespace UI
         int panelNum = 0;
         [SerializeField] GameObject panelBox;
         [SerializeField] TextMeshProUGUI text;
+        [SerializeField] AudioSource audioSource;
 
         bool isShowing = false;
 
@@ -18,6 +19,8 @@ namespace UI
         {
             if (collision.CompareTag("Player"))
             {
+                audioSource.Stop();
+                panelBox.SetActive(true);
                 isShowing = true;
                 Time.timeScale = 0;
                 Panels();
@@ -28,7 +31,7 @@ namespace UI
         {
             if (isShowing == true)
             {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     panelNum++;
                     Panels();
@@ -45,8 +48,9 @@ namespace UI
             else
             {
                 panelNum = 0;
+                panelBox.SetActive(false);
                 Time.timeScale = 1;
-                gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
     }
