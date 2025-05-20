@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShowMenu : MonoBehaviour
 {
     [SerializeField] GameObject menuObject;
+    [SerializeField] AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +16,7 @@ public class ShowMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            audioSource.Stop();
             Show();
         }
         if (Input.GetKeyUp(KeyCode.Tab))
