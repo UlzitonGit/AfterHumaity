@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 2f;
     }
 
     private void FixedUpdate()
@@ -140,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (!isRightWall && !isLeftWall && isJumping)
         {
-            rb.gravityScale = 2;
+            rb.gravityScale = 2f;
             isOnWall = false;
         }
     }

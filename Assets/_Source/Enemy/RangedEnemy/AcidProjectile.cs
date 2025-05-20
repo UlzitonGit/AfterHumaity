@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AcidProjectile : MonoBehaviour
 {
+    public int damage = 10;
     private float speed;
     private Vector2 direction;
     [SerializeField] LayerMask layerMask;
@@ -37,7 +38,7 @@ public class AcidProjectile : MonoBehaviour
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage();
+                playerHealth.TakeDamage(damage);
             }
             Destroy(gameObject);
         }

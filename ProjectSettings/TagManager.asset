@@ -9,6 +9,7 @@ TagManager:
   - Flame
   - AttackZone
   - piece
+  - BossZone
   layers:
   - Default
   - TransparentFX

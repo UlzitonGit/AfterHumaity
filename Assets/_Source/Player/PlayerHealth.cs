@@ -22,11 +22,11 @@ public class PlayerHealth : MonoBehaviour
         if (other.CompareTag("AttackZone") && canTakeDamage)
         {
             StartCoroutine(DamageCooldown());
-            TakeDamage();
+            TakeDamage(10);
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
