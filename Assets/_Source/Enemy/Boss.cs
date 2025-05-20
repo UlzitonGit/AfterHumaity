@@ -78,7 +78,7 @@ public class Boss : MonoBehaviour
         text.text = "Boss enters Second phase! Speed+";
         text.gameObject.SetActive(true);
         currentPhase = 2;
-        moveSpeed *= 1.3f;
+        moveSpeed *= 1.2f;
     }
 
     private void EnterPhase3()
@@ -88,7 +88,7 @@ public class Boss : MonoBehaviour
         damage = 20;
         isInFinalPhase = true;
         gameObject.GetComponent<EnemyHealth>().health = 80;
-        moveSpeed *= 1.5f;
+        moveSpeed *= 1.2f;
     }
 
     private IEnumerator AttackRoutine()
