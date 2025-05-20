@@ -1,8 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float dashPower;
+    [SerializeField] private PlayerSoundController soundController;
 
     private bool canJump = true;
     private bool isJumping = false;
@@ -34,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     public float dir = 1;
     private bool canDoubleJump = false;
     private bool dashUnlocked = false;
+    private bool isMoving = false;
 
     void Start()
     {
@@ -52,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Walk()
     {
+        moveVector.x = Input.GetAxis("Horizontal");
+        isMoving = moveVector.x != 0;
+
         if (wallJumping || isDashing) return;
 
         moveVector.x = Input.GetAxis("Horizontal");
@@ -68,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(DashReload());
         }
+
+        if (soundController != null)
+        {
+            soundController.UpdateMovementSounds(isMoving, isGrounded);
+        }
     }
 
     public void CheckAbilities()
@@ -80,6 +87,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((isLeftWall || isRightWall) && Input.GetKey(KeyCode.Space) && canJump)
         {
+            if (soundController != null)
+            {
+                soundController.PlayJumpSound();
+            }
             StartCoroutine(JumpWall());
             rb.velocity = Vector3.zero;
             float horizontalForce = isLeftWall ? jumpWallHorizontal : -jumpWallHorizontal;
@@ -87,6 +98,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Space) && (canDoubleJump == true && jumpCount > 0 || canDoubleJump == false && isGrounded == true) && canJump == true && wallJumping == false)
         {
+            if (soundController != null)
+            {
+                soundController.PlayJumpSound();
+            }
             canJump = false;
             StartCoroutine(JumpReload());
             rb.velocity = new Vector3(0, 0, 0);

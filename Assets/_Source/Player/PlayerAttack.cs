@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] private PlayerSoundController soundController;
     [SerializeField] private GameObject attackZone;
     [SerializeField] private Animator anim;
     [SerializeField] private float attackCooldown = 0.7f;
@@ -22,8 +23,10 @@ public class PlayerAttack : MonoBehaviour
         attackZone.SetActive(true);
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(0.2f);
+        soundController.PlayAttackSound();
         attackZone.SetActive(false);
         yield return new WaitForSeconds(attackCooldown);
+        attackZone.GetComponent<AttackTrigger>().hit = false;
         canAttack = true;
     }
 }

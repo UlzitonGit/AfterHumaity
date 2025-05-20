@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] private PlayerSoundController soundController;
     [SerializeField] private ParticleSystem flame;
     [SerializeField] public float health = 100f;
     private FirstEnemy firstEnemy;
@@ -32,6 +33,7 @@ public class EnemyHealth : MonoBehaviour
             }
 
             scoreText.text = "Score: " + gameManager.score.ToString();
+            soundController.PlayEnemySound();
             Destroy(gameObject);
         }
     }
