@@ -29,12 +29,21 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        UpdateBar();
 
         if (currentHealth <= 0)
         {
             Die();
         }
+    }
+
+    public void UpdateBar()
+    {
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.SetHealth(currentHealth);
     }
 
     private IEnumerator DamageCooldown()

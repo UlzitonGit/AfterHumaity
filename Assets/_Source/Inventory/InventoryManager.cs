@@ -5,6 +5,7 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] TMP_Text boxPiecesNum;
     [SerializeField] TMP_Text boxNum;
+    [SerializeField] TMP_Text potionNum;
     InventoryList inventoryList = new InventoryList();
     [SerializeField] int boxPiecesNeeded = 3;
     [SerializeField] GameObject boxPreset;
@@ -22,12 +23,19 @@ public class InventoryManager : MonoBehaviour
             inventoryList.AddItem("BoxPiece");
             UpdateText();
         }
+        if (collision.CompareTag("Potion"))
+        {
+            Destroy(collision.gameObject);
+            inventoryList.AddItem("Potion");
+            UpdateText();
+        }
     }
 
     void UpdateText()
     {
         boxPiecesNum.text = "" + inventoryList.GetItem("BoxPiece");
         boxNum.text = "" + inventoryList.GetItem("Box");
+        potionNum.text = "" + inventoryList.GetItem("Potion");
     }
 
     public void TryCraftBox()
@@ -52,6 +60,17 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("Crafted");
             Instantiate(boxPreset, transform.position, Quaternion.identity);
             UpdateText() ;
+        }
+    }
+
+    public void TryUsePotion()
+    {
+        if (inventoryList.GetItem("Potion") >= 1)
+        {
+            inventoryList.RemoveItem("Potion", 1);
+            gameObject.GetComponent<PlayerHealth>().currentHealth += 20;
+            gameObject.GetComponent<PlayerHealth>().UpdateBar();
+            UpdateText();
         }
     }
 }

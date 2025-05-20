@@ -10,6 +10,7 @@ TagManager:
   - AttackZone
   - piece
   - BossZone
+  - Potion
   layers:
   - Default
   - TransparentFX

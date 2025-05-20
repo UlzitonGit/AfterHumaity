@@ -2,6 +2,7 @@ public class InventoryList
 {
     int BoxPiece = 0;
     int Box = 0;
+    int Potion = 0;
 
     public void AddItem(string name)
     {
@@ -12,6 +13,9 @@ public class InventoryList
                 break;
             case "Box":
                 Box++;
+                break;
+            case "Potion":
+                Potion++;
                 break;
             default: break;
         }
@@ -27,6 +31,9 @@ public class InventoryList
             case "Box":
                 Box = Box - num;
                 break;
+            case "Potion":
+                Potion = Potion - num;
+                break;
             default: break;
         }
     }
@@ -39,6 +46,8 @@ public class InventoryList
                 return BoxPiece;
             case "Box":
                 return Box;
+            case "Potion":
+                return Potion;
             default:
                 return 0;
         }

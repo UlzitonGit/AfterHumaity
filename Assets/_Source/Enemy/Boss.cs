@@ -10,7 +10,6 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject acidProjectilePrefab;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float rageRadius = 20f;
     [SerializeField] private int damage = 10;
     [SerializeField] private TextMeshProUGUI text;
 
