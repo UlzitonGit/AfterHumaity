@@ -47831,6 +47831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: -1
+  parallaxSpeed: 0.0243
 --- !u!1 &759244892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 431895050904856641, guid: fe1359353eed112409d90f6058ab4457, type: 3}
@@ -82071,6 +82072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: -1
+  parallaxSpeed: 0
 --- !u!4 &1752914990 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8068772623718480110, guid: 02bdafd382b4f2f45a8aa7ffd42389c6, type: 3}
