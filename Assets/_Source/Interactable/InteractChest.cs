@@ -6,6 +6,7 @@ public class InteractChest : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] KeyCode interactKey = KeyCode.E;
     [SerializeField] int score;
+    [SerializeField] PlayerSoundController soundController;
     bool playerInRange = false;
     bool isOpened = false;
     GameObject player;
@@ -26,6 +27,7 @@ public class InteractChest : MonoBehaviour
     }
     private void OpenChest()
     {
+        soundController.PlayChestSound();
         isOpened = true;
         animator.SetTrigger("Play");
         gameManager.score += score;

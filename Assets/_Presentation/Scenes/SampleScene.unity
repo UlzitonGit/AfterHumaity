@@ -325,6 +325,7 @@ MonoBehaviour:
   animator: {fileID: 44062535}
   interactKey: 101
   score: 200
+  soundController: {fileID: 1285399919}
   scoreText: {fileID: 809907772}
 --- !u!61 &44062534
 BoxCollider2D:
@@ -1642,7 +1643,8 @@ MonoBehaviour:
     one. Don't make our mistakes. The Earth remembers.
   panelBox: {fileID: 1839445711}
   text: {fileID: 1842403865}
-  audioSource: {fileID: 1285399917}
+  audioSource: {fileID: 761100556}
+  paperSource: {fileID: 1285399919}
 --- !u!61 &220035270
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2300,6 +2302,7 @@ MonoBehaviour:
   animator: {fileID: 401846531}
   interactKey: 101
   score: 200
+  soundController: {fileID: 1285399919}
   scoreText: {fileID: 809907772}
 --- !u!61 &401846530
 BoxCollider2D:
@@ -47257,6 +47260,7 @@ MonoBehaviour:
   animator: {fileID: 693420596}
   interactKey: 101
   score: 200
+  soundController: {fileID: 1285399919}
   scoreText: {fileID: 809907772}
 --- !u!61 &693420595
 BoxCollider2D:
@@ -47519,7 +47523,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 5260750666308694636, guid: 2178f9cf8874b4545abc46c812961570, type: 3}
   m_Color: {r: 0.9433962, g: 0.6521886, b: 0.37824848, a: 1}
   m_FlipX: 0
@@ -47608,6 +47612,7 @@ MonoBehaviour:
   animator: {fileID: 726469939}
   interactKey: 101
   score: 200
+  soundController: {fileID: 1285399919}
   scoreText: {fileID: 809907772}
 --- !u!61 &726469938
 BoxCollider2D:
@@ -48039,7 +48044,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 5260750666308694636, guid: 2178f9cf8874b4545abc46c812961570, type: 3}
   m_Color: {r: 0.9433962, g: 0.6521886, b: 0.37824848, a: 1}
   m_FlipX: 0
@@ -48600,7 +48605,8 @@ MonoBehaviour:
     silence?"
   panelBox: {fileID: 1839445711}
   text: {fileID: 1842403865}
-  audioSource: {fileID: 1285399917}
+  audioSource: {fileID: 761100556}
+  paperSource: {fileID: 1285399919}
 --- !u!61 &811580260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72266,7 +72272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &894187758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -79633,6 +79639,9 @@ MonoBehaviour:
   missSound: {fileID: 8300000, guid: 9098589196d21464ab0a955764d64db6, type: 3}
   enemySound: {fileID: 8300000, guid: e4a85a53ebc8cbd498a1f244dce6ca21, type: 3}
   paperSound: {fileID: 8300000, guid: fb1a094dfcda614499823f26ed35fd37, type: 3}
+  chestSound: {fileID: 8300000, guid: 1ccb7b1805179684faba7ed352601e05, type: 3}
+  itemSound: {fileID: 8300000, guid: ae23a372e2c84a34a92d0b35a4bcf6ee, type: 3}
+  drinkSound: {fileID: 8300000, guid: d32b636fbef6b9a40bda3c1282aab163, type: 3}
   trigger: {fileID: 909032485}
 --- !u!1 &1291310103
 GameObject:
@@ -80167,6 +80176,7 @@ MonoBehaviour:
   animator: {fileID: 1347675538}
   interactKey: 101
   score: 200
+  soundController: {fileID: 1285399919}
   scoreText: {fileID: 809907772}
 --- !u!1 &1348961727
 GameObject:
@@ -81062,7 +81072,8 @@ MonoBehaviour:
     soil that could rise up against us. Progress marches on... but toward what end?"
   panelBox: {fileID: 1839445711}
   text: {fileID: 1842403865}
-  audioSource: {fileID: 1285399917}
+  audioSource: {fileID: 761100556}
+  paperSource: {fileID: 1285399919}
 --- !u!61 &1487032525
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -81668,7 +81679,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 2917249146457337290, guid: 89a470d3810444743b55baaa28dc087f, type: 3}
   m_Color: {r: 0.9716981, g: 0.62867624, b: 0.30709326, a: 0.31764707}
   m_FlipX: 0
@@ -81848,6 +81859,7 @@ MonoBehaviour:
   animator: {fileID: 1642142898}
   interactKey: 101
   score: 200
+  soundController: {fileID: 1285399919}
   scoreText: {fileID: 809907772}
 --- !u!61 &1642142897
 BoxCollider2D:
@@ -82112,6 +82124,7 @@ MonoBehaviour:
   animator: {fileID: 1646571824}
   interactKey: 101
   score: 200
+  soundController: {fileID: 1285399919}
   scoreText: {fileID: 809907772}
 --- !u!61 &1646571823
 BoxCollider2D:
@@ -82285,6 +82298,7 @@ MonoBehaviour:
   animator: {fileID: 1652289582}
   interactKey: 101
   score: 200
+  soundController: {fileID: 1285399919}
   scoreText: {fileID: 809907772}
 --- !u!61 &1652289581
 BoxCollider2D:
@@ -82919,7 +82933,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 2917249146457337290, guid: 89a470d3810444743b55baaa28dc087f, type: 3}
   m_Color: {r: 0.9716981, g: 0.62867624, b: 0.30709326, a: 0.31764707}
   m_FlipX: 0
@@ -88973,8 +88987,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.038000003, y: 0.26452395}
   m_AnchorMax: {x: 0.96800005, y: 0.97300005}
-  m_AnchoredPosition: {x: -1, y: -4.5}
-  m_SizeDelta: {x: 3.2232056, y: 6.1072083}
+  m_AnchoredPosition: {x: -1.4749, y: -6.7211}
+  m_SizeDelta: {x: -18.9269, y: 1.665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842403865
 MonoBehaviour:
@@ -89426,7 +89440,8 @@ MonoBehaviour:
     convenience always trump survival?"
   panelBox: {fileID: 1839445711}
   text: {fileID: 1842403865}
-  audioSource: {fileID: 1285399917}
+  audioSource: {fileID: 761100556}
+  paperSource: {fileID: 1285399919}
 --- !u!61 &1980393136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -90639,6 +90654,10 @@ PrefabInstance:
       propertyPath: boxPiecesNum
       value: 
       objectReference: {fileID: 923638594}
+    - target: {fileID: 6314117167250206298, guid: fe1359353eed112409d90f6058ab4457, type: 3}
+      propertyPath: soundController
+      value: 
+      objectReference: {fileID: 1285399919}
     - target: {fileID: 6640912218234469122, guid: fe1359353eed112409d90f6058ab4457, type: 3}
       propertyPath: soundController
       value: 

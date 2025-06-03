@@ -10,6 +10,9 @@ public class PlayerSoundController : MonoBehaviour
     [SerializeField] AudioClip missSound;
     [SerializeField] AudioClip enemySound;
     [SerializeField] AudioClip paperSound;
+    [SerializeField] AudioClip chestSound;
+    [SerializeField] AudioClip itemSound;
+    [SerializeField] AudioClip drinkSound;
     [SerializeField] AttackTrigger trigger;
     private AudioSource audioSource;
     private bool wasGrounded;
@@ -60,6 +63,28 @@ public class PlayerSoundController : MonoBehaviour
         if (paperSound != null)
         {
             audioSource.PlayOneShot(paperSound);
+        }
+    }
+
+    public void PlayChestSound()
+    {
+        if (chestSound != null)
+        {
+            audioSource.PlayOneShot(chestSound);
+        }
+    }
+    public void ItemSound()
+    {
+        if (itemSound != null)
+        {
+            audioSource.PlayOneShot(itemSound);
+        }
+    }
+    public void DrinkSound()
+    {
+        if (drinkSound != null)
+        {
+            audioSource.PlayOneShot(drinkSound);
         }
     }
 

@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     InventoryList inventoryList = new InventoryList();
     [SerializeField] int boxPiecesNeeded = 3;
     [SerializeField] GameObject boxPreset;
+    [SerializeField] PlayerSoundController soundController;
 
     private void Start()
     {
@@ -19,12 +20,14 @@ public class InventoryManager : MonoBehaviour
     {
         if (collision.CompareTag("piece"))
         {
+            soundController.ItemSound();
             Destroy(collision.gameObject);
             inventoryList.AddItem("BoxPiece");
             UpdateText();
         }
         if (collision.CompareTag("Potion"))
         {
+            soundController.ItemSound();
             Destroy(collision.gameObject);
             inventoryList.AddItem("Potion");
             UpdateText();
@@ -67,6 +70,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (inventoryList.GetItem("Potion") >= 1)
         {
+            soundController.DrinkSound();
             inventoryList.RemoveItem("Potion", 1);
             gameObject.GetComponent<PlayerHealth>().currentHealth += 20;
             gameObject.GetComponent<PlayerHealth>().UpdateBar();

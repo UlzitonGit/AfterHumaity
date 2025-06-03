@@ -9,6 +9,7 @@ namespace UI
         [SerializeField] GameObject panelBox;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] AudioSource audioSource;
+        [SerializeField] PlayerSoundController paperSource;
 
         bool isShowing = false;
 
@@ -17,7 +18,7 @@ namespace UI
             if (collision.CompareTag("Player"))
             {
                 audioSource.Stop();
-                audioSource.GetComponent<PlayerSoundController>().PlayPaperSound();
+                paperSource.PlayPaperSound();
                 panelBox.SetActive(true);
                 isShowing = true;
                 text.text = noteText;
