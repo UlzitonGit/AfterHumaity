@@ -79206,7 +79206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSource: {fileID: 761100556}
   walkSound: {fileID: 8300000, guid: edbc619a0cfac94488fbe884a6aff7f1, type: 3}
-  jumpSound: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: 53037b5547933db4ca9d1e05a4aaa9f7, type: 3}
   hitSound: {fileID: 8300000, guid: 56ba095cf38cb58409099d82ae78a383, type: 3}
   missSound: {fileID: 8300000, guid: 9098589196d21464ab0a955764d64db6, type: 3}
   enemySound: {fileID: 8300000, guid: e4a85a53ebc8cbd498a1f244dce6ca21, type: 3}
