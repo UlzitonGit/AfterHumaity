@@ -20,8 +20,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        if (health <= 0) return;
-
         health -= damage;
         if (health <= 0)
         {
@@ -44,7 +42,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.CompareTag("Flame"))
         {
-            flame.maxParticles = 2000;
+            //flame.maxParticles = 2000;
         }
     }
 
@@ -52,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.CompareTag("Flame"))
         {
-            flame.maxParticles = 0;
+            //flame.maxParticles = 0;
         }
     }
 }
