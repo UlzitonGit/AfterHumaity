@@ -9,6 +9,7 @@ public class PlayerSoundController : MonoBehaviour
     [SerializeField] AudioClip hitSound;
     [SerializeField] AudioClip missSound;
     [SerializeField] AudioClip enemySound;
+    [SerializeField] AudioClip paperSound;
     [SerializeField] AttackTrigger trigger;
     private AudioSource audioSource;
     private bool wasGrounded;
@@ -51,6 +52,14 @@ public class PlayerSoundController : MonoBehaviour
         else if (!trigger.hit && missSound != null)
         {
             audioSource.PlayOneShot(missSound);
+        }
+    }
+
+    public void PlayPaperSound()
+    {
+        if (paperSound != null)
+        {
+            audioSource.PlayOneShot(paperSound);
         }
     }
 

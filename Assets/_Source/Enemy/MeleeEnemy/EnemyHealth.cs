@@ -20,6 +20,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void GetDamage(float damage)
     {
+        if (health <= 0) return;
+
         health -= damage;
         if (health <= 0)
         {
