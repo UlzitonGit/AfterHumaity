@@ -10,6 +10,7 @@ namespace UI
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] AudioSource audioSource;
         [SerializeField] PlayerSoundController paperSource;
+        [SerializeField] GameObject menu;
 
         bool isShowing = false;
 
@@ -17,6 +18,7 @@ namespace UI
         {
             if (collision.CompareTag("Player"))
             {
+                menu.SetActive(false);
                 audioSource.Stop();
                 paperSource.PlayPaperSound();
                 panelBox.SetActive(true);
@@ -34,6 +36,7 @@ namespace UI
                 {
                     panelBox.SetActive(false);
                     Time.timeScale = 1;
+                    menu.SetActive(true);
                     Destroy(gameObject);
                 }
             }

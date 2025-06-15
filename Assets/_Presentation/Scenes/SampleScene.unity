@@ -1717,6 +1717,7 @@ MonoBehaviour:
   text: {fileID: 1842403865}
   audioSource: {fileID: 761100556}
   paperSource: {fileID: 1285399919}
+  menu: {fileID: 2078580448}
 --- !u!61 &220035270
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49230,6 +49231,7 @@ MonoBehaviour:
   text: {fileID: 1842403865}
   audioSource: {fileID: 761100556}
   paperSource: {fileID: 1285399919}
+  menu: {fileID: 2078580448}
 --- !u!61 &811580260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -81961,6 +81963,7 @@ MonoBehaviour:
   text: {fileID: 1842403865}
   audioSource: {fileID: 761100556}
   paperSource: {fileID: 1285399919}
+  menu: {fileID: 2078580448}
 --- !u!61 &1487032525
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -90552,6 +90555,7 @@ MonoBehaviour:
   text: {fileID: 1842403865}
   audioSource: {fileID: 761100556}
   paperSource: {fileID: 1285399919}
+  menu: {fileID: 2078580448}
 --- !u!61 &1980393136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -91169,7 +91173,7 @@ GameObject:
   - component: {fileID: 2078580450}
   - component: {fileID: 2078580449}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: MenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
