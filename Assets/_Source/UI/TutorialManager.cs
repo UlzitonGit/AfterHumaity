@@ -12,6 +12,7 @@ namespace UI
         [SerializeField] GameObject panelBox;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] AudioSource audioSource;
+        [SerializeField] GameObject menu;
 
         bool isShowing = false;
 
@@ -19,6 +20,7 @@ namespace UI
         {
             if (collision.CompareTag("Player"))
             {
+                menu.SetActive(false);
                 audioSource.Stop();
                 panelBox.SetActive(true);
                 isShowing = true;
@@ -50,6 +52,7 @@ namespace UI
                 panelNum = 0;
                 panelBox.SetActive(false);
                 Time.timeScale = 1;
+                menu.SetActive(true);
                 Destroy(gameObject);
             }
         }
