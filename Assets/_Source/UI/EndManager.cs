@@ -1,5 +1,6 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -20,14 +21,9 @@ namespace UI
                 audioSource.Stop();
                 panelBox.SetActive(true);
                 text.text = endText;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    panelBox.SetActive(false);
-                    Time.timeScale = 1;
-                    menu.SetActive(true);
-                    Destroy(gameObject);
-                }
             }
         }
     }
