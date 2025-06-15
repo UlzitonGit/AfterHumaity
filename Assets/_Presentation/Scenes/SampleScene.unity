@@ -555,7 +555,7 @@ Transform:
   m_GameObject: {fileID: 52427417}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6629, y: 0.345, z: 0}
+  m_LocalPosition: {x: 1.6629, y: 0.643, z: 0}
   m_LocalScale: {x: 2.99632, y: 0.66911995, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50243,7 +50243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Points:'
+  m_text: 'Score: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 194f2c9f708701942bf0b33cb822a654, type: 2}
   m_sharedMaterial: {fileID: -3424250556554007683, guid: 194f2c9f708701942bf0b33cb822a654, type: 2}
@@ -95345,7 +95345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6311033332804085757, guid: fe1359353eed112409d90f6058ab4457, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.341
+      value: 0.716
       objectReference: {fileID: 0}
     - target: {fileID: 6314117167250206298, guid: fe1359353eed112409d90f6058ab4457, type: 3}
       propertyPath: boxNum
